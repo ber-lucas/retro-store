@@ -5,7 +5,14 @@ module.exports = {
     './index.html'
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        galaxy: "url('/background-galaxy-red.png')",
+      },
+      backgroundColor: {
+        main: '#121214',
+      }
+    },
   },
   plugins: [],
 }
