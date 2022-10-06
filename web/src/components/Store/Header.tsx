@@ -1,0 +1,33 @@
+import React from "react";
+
+const Header = () => {
+  return (
+    <div className="pt-1 bg-nlw-gradient self-stretch rounded-lg mt-8 overflow-hidden">
+      <div className="bg-[#2A2634] px-8 py-6 flex justify-between items-center">
+        <div>
+          <strong className="text-4xl text-white font-black block">
+            Store
+          </strong>
+        </div>
+
+        <div className="flex gap-6 justify-center items-center">
+          <strong className="text-3xl text-white font-black block">
+            Saldo
+          </strong>
+
+          <div className="flex bg-zinc-900 w-[126px] h-[38px] rounded-sm justify-center items-center">
+            <span className="text-2xl text-white font-semibold block">
+              R$ 0,00
+            </span>
+          </div>
+
+          <button className="py-3 px-4 bg-[#F44336] hover:bg-[#d43a2f] text-white rounded flex items-center gap-3">
+            Carrinho de compras
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Header;
