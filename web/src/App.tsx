@@ -1,10 +1,11 @@
-import Landing from "./components/Landing/Landing";
-import Store from "./components/Store/Store";
+
+import Header from "./components/Header";
 import "./styles/main.css";
 
 function App() {
   return (
-    <div>
+    <div className="flex flex-col items-center">
+      <Header />
       {/*<Landing />*/}
       {/*<Store />*/} {/*Loja */}
     </div>
