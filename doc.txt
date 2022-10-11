@@ -1,0 +1,10 @@
+Documentação de Apoio
+
+	icones do phosphor-icons
+	https://phosphoricons.com/
+	
+	video explicativo sobre react-router (Rocketseat)
+	https://www.youtube.com/watch?v=G7hHdcW4kQY&ab_channel=Rocketseat
+	
+	documentação sobre react-router
+	https://reactrouter.com/en/dev/start/overview
