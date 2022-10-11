@@ -1,14 +1,14 @@
-
-import Header from "./components/Header";
+import { BrowserRouter as Router} from 'react-router-dom';
+import Routes from './routes';
 import "./styles/main.css";
 
 function App() {
   return (
-    <div className="flex flex-col items-center">
-      <Header />
-      {/*<Landing />*/}
-      {/*<Store />*/} {/*Loja */}
-    </div>
+    <Router>
+      <div className="flex flex-col items-center">
+        <Routes />
+      </div>
+    </Router>
   );
 }
 
