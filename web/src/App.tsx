@@ -4,10 +4,8 @@ import "./styles/main.css";
 
 function App() {
   return (
-    <Router>
-      <div className="flex flex-col items-center">
-        <Routes />
-      </div>
+    <Router>      
+      <Routes />
     </Router>
   );
 }
