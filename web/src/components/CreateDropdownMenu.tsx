@@ -1,7 +1,10 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { List, Storefront, UserCircle } from "phosphor-react";
+import { useNavigate } from 'react-router-dom';
 
 const CreateDropdownMenu = () => {
+    const navigate = useNavigate();
+
     return (
         <DropdownMenu.Root>
             <DropdownMenu.Trigger title='Menu de Navegação' className="w-10 h-10 rounded-full bg-red-500 flex justify-center items-center                                                                                                                                                                                   ">
@@ -22,12 +25,12 @@ const CreateDropdownMenu = () => {
                     <DropdownMenu.Separator className='h-[1px] mb-1 bg-orange-400/50 mx-1'/>
 
                     <DropdownMenu.Group className='pl-6 pr-3 flex flex-col gap-1'>
-                        <DropdownMenu.Item className='flex justify-between items-center'>
+                        <DropdownMenu.Item title='Profile' onClick={() => {navigate('/')}} className='flex justify-between items-center hover:cursor-pointer'>
                             Perfil
                             <UserCircle size={22} />
                         </DropdownMenu.Item>
                         
-                        <DropdownMenu.Item className='flex justify-between items-center'>
+                        <DropdownMenu.Item title='Store' onClick={() => {navigate('/store')}} className='flex justify-between items-center hover:cursor-pointer'>
                             Loja
                             <Storefront size={22} />
                         </DropdownMenu.Item>
