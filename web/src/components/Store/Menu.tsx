@@ -1,8 +1,8 @@
-import React from "react";
+import { ShoppingCartSimple } from "phosphor-react"
 
-const Header = () => {
+const Menu = () => {
   return (
-    <div className="pt-1 bg-nlw-gradient self-stretch rounded-lg mt-8 overflow-hidden">
+    <div className="pt-1 bg-nlw-gradient self-stretch rounded-lg mt-16 overflow-hidden">
       <div className="bg-[#2A2634] px-8 py-6 flex justify-between items-center">
         <div>
           <strong className="text-4xl text-white font-black block">
@@ -22,7 +22,8 @@ const Header = () => {
           </div>
 
           <button className="py-3 px-4 bg-[#F44336] hover:bg-[#d43a2f] text-white rounded flex items-center gap-3">
-            Carrinho de compras
+            <ShoppingCartSimple size={25} weight={"duotone"} color={'#fff'} />
+            <strong className="text-[19px]">Carrinho de compras</strong>
           </button>
         </div>
       </div>
@@ -30,4 +31,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Menu;
