@@ -25,7 +25,7 @@ const CreateDropdownMenu = () => {
                     <DropdownMenu.Separator className='h-[1px] mb-1 bg-orange-400/50 mx-1'/>
 
                     <DropdownMenu.Group className='pl-6 pr-3 flex flex-col gap-1'>
-                        <DropdownMenu.Item title='Profile' onClick={() => {navigate('/')}} className='flex justify-between items-center hover:cursor-pointer'>
+                        <DropdownMenu.Item title='Profile' onClick={() => {navigate('/profile')}} className='flex justify-between items-center hover:cursor-pointer'>
                             Perfil
                             <UserCircle size={22} />
                         </DropdownMenu.Item>
