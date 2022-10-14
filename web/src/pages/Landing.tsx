@@ -10,7 +10,7 @@ function Landing() {
             <img src="Logo.svg" alt="Logo Retro Store" />
 
             <div className="flex flex-col gap-2">
-                <main className="grid grid-cols-6 gap-6  py-8 rounded-lg">
+                <main className="grid grid-cols-6 gap-6 py-8 rounded-lg">
                     <GameBanner imagePath="/game-1.png" name="League of Legends" />
                     <GameBanner imagePath="/game-2.png" name="Dota 2" />
                     <GameBanner imagePath="/game-3.png" name="Counter Strike" />
@@ -26,7 +26,7 @@ function Landing() {
                     <GameBanner imagePath="/game-6.png" name="World of Warcraft" />
                 </main>
 
-                <div className='pt-1 bg-nlw-gradient self-stretch rounded-lg mb-8 overflow-hidden'>
+                <div className='pt-1 bg-nlw-gradient rounded-lg mb-8'>
                     <div className='bg-[#2A2632] px-8 py-6 flex justify-between items-center'>
                         <div>
                             <strong className='text-2xl text-white font-black block'>Gostou de algum dos games?</strong>

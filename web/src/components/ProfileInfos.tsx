@@ -1,4 +1,4 @@
-import { Input } from "../Form/input";
+import { Input } from "../Form/Input";
 
 const ProfileInfos = () => {
     return (
