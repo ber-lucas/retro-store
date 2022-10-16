@@ -4,10 +4,15 @@ import Menu from "../components/Store/Menu";
 
 const Store = () => {
   return (
-    <div className="max-w-[1360px] mx-auto flex flex-col items-center my-20">
-      <Header />
-      <Menu />
-      <Body />
+    <div className="max-w-[1360px] mx-auto flex flex-col items-center gap-16 py-8">
+      <Header /> 
+
+      <img src="Logo.svg" alt="Logo Retro Store" />
+
+      <div>
+        <Menu />
+        <Body />
+      </div>
     </div>
   );
 };

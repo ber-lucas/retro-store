@@ -5,11 +5,14 @@ import Body from "../components/Store/Body";
 
 function Profile() {
     return(
-        <div className="max-w-[1360px] mx-auto flex flex-col items-center my-20">
+        <div className="max-w-[1360px] mx-auto flex flex-col items-center gap-16 py-8">
             <Header />
             <ProfileInfos />
-            <ProfileMenu />
-            <Body />
+
+            <div>
+                <ProfileMenu />
+                <Body />
+            </div>
         </div>
     )
 }

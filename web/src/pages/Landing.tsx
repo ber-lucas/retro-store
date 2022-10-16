@@ -4,7 +4,7 @@ import Header from "../components/Header"
 
 function Landing() {
     return (
-        <div className="flex flex-col items-center gap-16">
+        <div className="flex flex-col items-center gap-16 py-8">
             <Header />
 
             <img src="Logo.svg" alt="Logo Retro Store" />
@@ -26,8 +26,8 @@ function Landing() {
                     <GameBanner imagePath="/game-6.png" name="World of Warcraft" />
                 </main>
 
-                <div className='pt-1 bg-nlw-gradient rounded-lg mb-8'>
-                    <div className='bg-[#2A2632] px-8 py-6 flex justify-between items-center'>
+                <div className='pt-1 bg-nlw-gradient rounded-lg'>
+                    <div className='bg-[#2A2632] px-8 py-6 flex justify-between items-center rounded-lg'>
                         <div>
                             <strong className='text-2xl text-white font-black block'>Gostou de algum dos games?</strong>
                             <span className='text-zinc-400 block'>Registre um perfil para começar a comprar, vender e adicionar games!</span>
