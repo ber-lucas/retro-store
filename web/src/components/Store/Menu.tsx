@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Menu = () => {
   const navigate = useNavigate();
+  
   return (
     <div className="pt-1 bg-nlw-gradient self-stretch rounded-lg mt-16 overflow-hidden">
       <div className="bg-[#2A2634] px-8 py-6 flex justify-between items-center">
@@ -23,7 +24,7 @@ const Menu = () => {
             </span>
           </div>
 
-          <button onClick={() => {navigate('/cart')}} className="py-3 px-4 bg-[#F44336] hover:bg-[#d43a2f] text-white rounded flex items-center gap-3">
+          <button onClick={() => {navigate('/shopping-cart')}} className="py-3 px-4 bg-[#F44336] hover:bg-[#d43a2f] text-white rounded flex items-center gap-3">
             <ShoppingCartSimple size={25} weight={"duotone"} color={'#fff'} />
             <strong className="text-[19px]">Carrinho de compras</strong>
           </button>

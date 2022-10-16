@@ -1,13 +1,14 @@
 import { Minus } from "phosphor-react";
-import { Input } from "../Form/Input";
+import { useNavigate } from "react-router-dom";
 import CartInput from "./CartInput";
 
 const CartInfo = () => {
+    const navigate = useNavigate()
+
     return (
         <div>
-            <div>
-                <body className="text-white text-center font-extrabold text-3xl">Carrinho</body>
-            </div>
+            
+            <body className="text-white text-center font-extrabold text-3xl">Carrinho</body>
         
             <CartInput imagePath="/game-1.png" name="League of Legends" />
             <CartInput imagePath="/game-2.png" name="Dota 2" />
@@ -34,7 +35,7 @@ const CartInfo = () => {
 
             <div className="mt-8 flex justify-between">
             <div className="flex items-center">
-                    <button type="submit" className="flex justify-center bg-violet-500 rounded-md font-semibold items-center w-48 h-12 hover:bg-violet-800 text-white">
+                    <button onClick={() => navigate('/store')} type="submit" className="flex justify-center bg-violet-500 rounded-md font-semibold items-center w-48 h-12 hover:bg-violet-800 text-white">
                             <div className="flex">Continuar comprando</div>
                     </button>
                     </div>

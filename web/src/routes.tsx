@@ -1,4 +1,4 @@
-import { Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 import Landing from './pages/Landing';
 import Store from './pages/Store';
@@ -12,7 +12,7 @@ const MainRoutes = () => {
             <Route path='/' element={<Landing />}/>
             <Route path='/store' element={<Store />}/>
             <Route path='/profile' element={<Profile />}/>
-            <Route path='/cart' element={<Cart />}/>
+            <Route path='/shopping-cart' element={<Cart />}/>
 
             <Route path='*' element={<NotFound />} />
         </Routes>

@@ -1,5 +1,5 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { List, Storefront, UserCircle } from "phosphor-react";
+import { List, ShoppingCart, Storefront, UserCircle } from "phosphor-react";
 import { useNavigate } from 'react-router-dom';
 
 const CreateDropdownMenu = () => {
@@ -33,6 +33,11 @@ const CreateDropdownMenu = () => {
                         <DropdownMenu.Item title='Store' onClick={() => {navigate('/store')}} className='flex justify-between items-center hover:cursor-pointer'>
                             Loja
                             <Storefront size={22} />
+                        </DropdownMenu.Item>
+
+                        <DropdownMenu.Item title='Store' onClick={() => {navigate('/store')}} className='flex justify-between items-center hover:cursor-pointer'>
+                            Carrinho
+                            <ShoppingCart size={22} />
                         </DropdownMenu.Item>
                     </DropdownMenu.Group>
 
