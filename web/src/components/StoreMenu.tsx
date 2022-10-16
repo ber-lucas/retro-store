@@ -1,7 +1,7 @@
 import { ShoppingCartSimple } from "phosphor-react"
 import { useNavigate } from 'react-router-dom';
 
-const Menu = () => {
+const StoreMenu = () => {
   const navigate = useNavigate();
   
   return (
@@ -34,4 +34,4 @@ const Menu = () => {
   );
 };
 
-export default Menu;
+export default StoreMenu;

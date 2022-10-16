@@ -1,6 +1,6 @@
 import { SignIn, UserPlus } from "phosphor-react"
-import GameBanner from "../components/GameBanner"
 import Header from "../components/Header"
+import Body from "../components/Body"
 
 function Landing() {
     return (
@@ -10,21 +10,8 @@ function Landing() {
             <img src="Logo.svg" alt="Logo Retro Store" />
 
             <div className="flex flex-col gap-2">
-                <main className="grid grid-cols-6 gap-6 py-8 rounded-lg">
-                    <GameBanner imagePath="/game-1.png" name="League of Legends" />
-                    <GameBanner imagePath="/game-2.png" name="Dota 2" />
-                    <GameBanner imagePath="/game-3.png" name="Counter Strike" />
-                    <GameBanner imagePath="/game-4.png" name="Apex Legends" />
-                    <GameBanner imagePath="/game-5.png" name="Fortnite" />
-                    <GameBanner imagePath="/game-6.png" name="World of Warcraft" />
-
-                    <GameBanner imagePath="/game-1.png" name="League of Legends" />
-                    <GameBanner imagePath="/game-2.png" name="Dota 2" />
-                    <GameBanner imagePath="/game-3.png" name="Counter Strike" />
-                    <GameBanner imagePath="/game-4.png" name="Apex Legends" />
-                    <GameBanner imagePath="/game-5.png" name="Fortnite" />
-                    <GameBanner imagePath="/game-6.png" name="World of Warcraft" />
-                </main>
+                
+                <Body />
 
                 <div className='pt-1 bg-nlw-gradient rounded-lg'>
                     <div className='bg-[#2A2632] px-8 py-6 flex justify-between items-center rounded-lg'>

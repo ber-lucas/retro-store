@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import ProfileInfos from "../components/ProfileInfos";
 import ProfileMenu from "../components/ProfileMenu";
-import Body from "../components/Store/Body";
+import Body from "../components/Body";
 
 function Profile() {
     return(

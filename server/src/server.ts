@@ -1,18 +1,17 @@
 import express, { request, response } from 'express'
+import cors from 'cors'
 import { PrismaClient } from '@prisma/client'
 
 const app = express()
 const prisma = new PrismaClient()
-app.use(express.json())
 
-app.get('/store', async (request, response)=>{
-    const result  = await prisma.game.findMany({
-        select: {
-            title: true,
-            price: true,
-        }
-    })
-    return response.json(result)
+app.use(express.json())
+app.use(cors())
+
+app.get('/games', async (request, response)=>{
+    const games = await prisma.game.findMany()
+
+    return response.json(games)
 });
 
 app.get('/store/:id/balance', async (request, response)=>{
