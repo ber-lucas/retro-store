@@ -1,26 +1,44 @@
+import { GameController } from "phosphor-react";
+
 const CreateModalLogin = () => {
   return (
-    <div>
-      <div className="h-[40vh] flex flex-col justify-center items-center gap-1">
-        <h1 className="text-white text-5xl">Login</h1>
-      </div>
-      <div className="h-[20vh] flex flex-col items-center gap-1">
-        <h1 className="text-white text-5xl">Email</h1>
-        <h2 className="shadow-lg m-10 text-black text-3xl">fulano@email.com</h2>
-      </div>
-      <div className="h-[20vh] flex flex-col items-center gap-1">
-        <h1 className="text-white text-5xl">Senha</h1>
-        <h2 className="box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), text-black m-10 text-3xl">
-          *******
-        </h2>
-      </div>
-      <div className="flex justify-end items-center gap-10">
-        <button className="bg-zinc-500 text-white text-5xl rounded">
-          Cancelar
-        </button>
-        <button className="bg-red-500 text-white text-5xl rounded">
-          Login
-        </button>
+    <div className="h-[100vh] flex justify-center items-center">
+      <div
+        title="Caixa Azul"
+        className="px-10 py-8 bg-[#2A2634] h-[411px] w-[488px] flex flex-col rounded-lg shadow gap-8"
+      >
+        <h1 className="text-white font-black text-4xl">Login</h1>
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
+            <h1 className="text-white text-base font-semibold">Email</h1>
+            <input
+              className="bg-zinc-900 h-12 rounded pl-4 text-white"
+              placeholder="fulano@email.com"
+              type="email"
+              name="inputEmail"
+              id="inputEmail"
+            />
+          </div>
+          <div className="flex flex-col gap-2">
+            <h1 className="text-white text-base font-semibold">Senha</h1>
+            <input
+              className="bg-zinc-900 h-12 rounded pl-4 text-white"
+              placeholder="********"
+              type="password"
+              name="inputPassword"
+              id="inputPassword"
+            />
+          </div>
+        </div>
+        <div className="flex justify-end items-center gap-5">
+          <button className="bg-zinc-500 text-white text-base font-semibold h-12 w-28 rounded-md">
+            Cancelar
+          </button>
+          <button className="bg-red-500 text-white text-base font-semibold h-12 w-28 rounded-md flex items-center justify-center gap-3">
+            <GameController size={24} />
+            Login
+          </button>
+        </div>
       </div>
     </div>
   );
