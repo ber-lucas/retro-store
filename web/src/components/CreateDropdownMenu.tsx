@@ -35,7 +35,7 @@ const CreateDropdownMenu = () => {
                             <Storefront size={22} />
                         </DropdownMenu.Item>
 
-                        <DropdownMenu.Item title='Store' onClick={() => {navigate('/store')}} className='flex justify-between items-center hover:cursor-pointer'>
+                        <DropdownMenu.Item title='Store' onClick={() => {navigate('/shopping-cart')}} className='flex justify-between items-center hover:cursor-pointer'>
                             Carrinho
                             <ShoppingCart size={22} />
                         </DropdownMenu.Item>
