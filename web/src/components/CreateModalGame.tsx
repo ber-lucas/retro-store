@@ -54,7 +54,7 @@ export function CreateAdModal(props:GameBannerProps) {
             </ul>
               </body>
             <body className="mt-4">
-            <iframe width="360" height="240" src="https://www.youtube.com/embed/5TnynE3PuDE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="360" height="240" src="https://www.youtube.com/embed/5TnynE3PuDE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
             </body>
             <body className="mt-4 bg-amber-300 rounded-md font-semibold hover:bg-violet-600 w-18 h-11 flex items-center text-black">R$ 35,95</body>
               
