@@ -7,16 +7,16 @@ interface GameBannerProps {
   name: string,
 }
 
-export function CreateAdModal(props:GameBannerProps) {
+export function CreateModalGame(props:GameBannerProps) {
   return (
     <Dialog.Portal>
       <Dialog.Overlay className="bg-black/60 inset-0 fixed" />
 
       <Dialog.Content className="fixed bg-[#2A2634] py-8 px-14 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] h-[620px] shadow-lg shadow-black/25 overflow-y-scroll">
-        <Dialog.Title className="text-3xl font-black text-center">{props.name}teste</Dialog.Title>
+        <Dialog.Title className="text-3xl font-black text-center">{props.name}</Dialog.Title>
 
           <form className="mt-8 flex flex-col justify-between items-center">
-            <img className="h-33 w-32 md:object-center" src="./public/game-1.png"/>
+            <img className="h-33 w-32 md:object-center" src={props.imagePath}/>
              <ol className="list-decimal mt-4">
                 <li>Descrição sobre o conceito e objetivo do jogo</li>
                 <li>Autores</li>
@@ -69,7 +69,7 @@ export function CreateAdModal(props:GameBannerProps) {
               
               <button
                 type="submit"
-                className="bg-green-500 rounded-md font-semibold flex flex-1 items-center w-48 hover:bg-violet-600"
+                className="bg-green-500 rounded-md font-semibold flex flex-1 items-center w-52 h-12 hover:bg-violet-600"
               >
                 <Plus size={32} />
                 <div className="flex">Adicionar ao carrinho</div>
