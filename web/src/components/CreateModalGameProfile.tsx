@@ -1,8 +1,16 @@
+import { Plus } from "phosphor-react";
+
 import * as Dialog from '@radix-ui/react-dialog';
 
 interface GameBannerProps {
-  imagePath: string,
-  name: string,
+  title: string,
+  about: string,
+  bannerUrl: string,
+  tag: string,
+  trailer: string,
+  userReviews: number,
+  specifications: string,
+  price: number
 }
 
 export function CreateModalGameProfile(props:GameBannerProps) {
@@ -11,15 +19,14 @@ export function CreateModalGameProfile(props:GameBannerProps) {
       <Dialog.Overlay className="bg-black/60 inset-0 fixed" />
 
       <Dialog.Content className="fixed bg-[#2A2634] py-8 px-14 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] h-[620px] shadow-lg shadow-black/25 overflow-y-scroll">
-        <Dialog.Title className="text-3xl font-black text-center">{props.name}</Dialog.Title>
+        <Dialog.Title className="text-3xl font-black text-center">{props.title}</Dialog.Title>
 
           <form className="mt-8 flex flex-col justify-between items-center">
-            <img className="h-33 w-32 md:object-center" src={props.imagePath}/>
+            <img className="h-33 w-32 md:object-center" src={props.bannerUrl}/>
              <ol className="list-decimal mt-4">
-                <li>Descrição sobre o conceito e objetivo do jogo</li>
-                <li>Autores</li>
-                <li>TAGs que facilitam a identificação</li>
-                <li>Requisitos mínimos e recomendados</li>
+                <li>{props.about}</li>
+                <li>{props.tag}</li>
+                <li>{props.specifications}</li>
              </ol>
              <body className="mt-4 gap-4">
              <ul className="flex justify-center">
@@ -52,7 +59,7 @@ export function CreateModalGameProfile(props:GameBannerProps) {
             </ul>
               </body>
             <body className="mt-4">
-            <iframe width="360" height="240" src="https://www.youtube.com/embed/5TnynE3PuDE" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            <iframe width="360" height="240" src={props.trailer} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
             </body>
           </form>
       </Dialog.Content>

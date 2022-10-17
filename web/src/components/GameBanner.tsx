@@ -6,8 +6,14 @@ export const DialogTrigger = DialogPrimitive.Trigger;
 export const DialogClose = DialogPrimitive.Close;
 
 interface GameBannerProps {
-  imagePath: string,
-  name: string,
+  title: string,
+  about: string,
+  bannerUrl: string,
+  tag: string,
+  trailer: string,
+  userReviews: number,
+  specifications: string,
+  price: number
 }
 
 const GameBanner = (props: GameBannerProps) => {
@@ -15,13 +21,21 @@ const GameBanner = (props: GameBannerProps) => {
     <Dialog>
       <DialogTrigger>
         <button className='relative rounded-lg overflow-hidden'>
-          <img src={props.imagePath} alt="" />
+          <img src={props.bannerUrl} alt="" />
 
           <div className='pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 right-0 left-0'>
-            <strong className='font-bold text-white block'>{props.name}</strong>
+            <strong className='font-bold text-white block'>{props.title}</strong>
           </div>
         </button>
-        <CreateModalGame imagePath="/game-1.png" name="League of Legends"/>
+        <CreateModalGame 
+        title={props.title}
+        about={props.about}
+        bannerUrl={props.bannerUrl} 
+        tag={props.tag}
+        trailer={props.trailer}
+        userReviews={props.userReviews}
+        specifications={props.specifications}
+        price={props.price}/>
       </DialogTrigger>
     </Dialog>
   )

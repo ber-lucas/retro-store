@@ -27,7 +27,16 @@ const Body = () => {
     <main className="grid grid-cols-6 gap-6 py-8">
       {games.map(game => {
         return (
-          <GameBanner imagePath={game.bannerUrl} name={game.title} />
+          <GameBanner 
+          title={game.title}
+          about={game.about}
+          bannerUrl={game.bannerUrl} 
+          tag={game.tag}
+          trailer={game.trailer}
+          userReviews={game.userReviews}
+          specifications={game.specifications}
+          price={game.price}
+           />
         )
       })}     
     </main>
