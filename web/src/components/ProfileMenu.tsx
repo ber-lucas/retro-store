@@ -18,12 +18,11 @@ const Menu = () => {
         <div className="flex gap-6 justify-center items-center">
           <Dialog>
             <DialogTrigger>
-              <CreateModalNewGame>
+              <CreateModalNewGame />
                   <button className="py-2 px-4 bg-[#22C55E] hover:bg-[#199a48] text-white rounded flex items-center gap-3">
                     <strong className="text-[27px]">+</strong>
                     <strong className="text-[19px]">Adicionar novo jogo</strong>
                   </button>
-                </CreateModalNewGame>
             </DialogTrigger>
           </Dialog>
         </div>

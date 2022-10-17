@@ -41,12 +41,11 @@ const ProfileInfos = () => {
                     <div className="mt-8 flex flex-col items-center">
                         <Dialog>
                             <DialogTrigger>
-                                <CreateModalBalance>
+                                <CreateModalBalance />
                                     <button className="py-3 px-4 bg-[#22C55E] hover:bg-[#199a48] text-white rounded flex items-center gap-3">
                                         <img src="/ProfileCoin.svg" alt="" />
                                         <strong className="text-[19px]">Adicionar Saldo</strong>
                                     </button>
-                                </CreateModalBalance>
                             </DialogTrigger>
                         </Dialog>
                         <button className="py-3 px-8 mt-5 bg-[#71717A] hover:bg-[#62626a] text-white rounded flex items-center gap-3">
