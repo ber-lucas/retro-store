@@ -2,7 +2,14 @@ import { Minus } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
 import CartInput from "./CartInput";
 
-const CartInfo = () => {
+interface GameBannerProps {
+    title: string,
+    bannerUrl: string,
+    tag: string,
+    price: number
+    }
+
+const CartInfo = (props: GameBannerProps) => {
     const navigate = useNavigate()
 
     return (
@@ -10,16 +17,16 @@ const CartInfo = () => {
             
             <body className="text-white text-center font-extrabold text-3xl">Carrinho</body>
         
-            <CartInput imagePath="/game-1.png" name="League of Legends" />
-            <CartInput imagePath="/game-2.png" name="Dota 2" />
-            <CartInput imagePath="/game-3.png" name="CS: GO" />
+            <CartInput bannerUrl={props.bannerUrl} title={props.title} price={props.price}/>
+            <CartInput bannerUrl={props.bannerUrl} title={props.title} price={props.price}/>
+            <CartInput bannerUrl={props.bannerUrl} title={props.title} price={props.price}/>
         
             <div>
                 <header className="flex justify-between w-[80rem] h-[8rem] mt-8 py-6 px-12 bg-[#fdfeff0f]" style={{'boxShadow': '0px 4px 4px rgba(0, 0, 0, 0.25)', 'borderRadius': '8px'}}>
                     <div className="flex items-center justify-center gap-4">
                         <div className=" text-white text-center font-extrabold text-3xl">Total estimado:</div>
                         <div className="flex items-center justify-center bg-orange-500 rounded-md font-semibold w-24 h-12 hover:bg-orange-700 text-center">
-                            <div className="flex">R$ 35,95</div>
+                            <div className="flex">R$ {props.price}</div>
                         </div>
                       
                         
