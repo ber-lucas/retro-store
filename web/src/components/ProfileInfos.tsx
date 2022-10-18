@@ -4,7 +4,7 @@ import { CreateModalBalance } from './CreateModalBalance';
 
 const ProfileInfos = () => {
     return (
-            <header className="w-[72rem] h-[23rem] mt-8 py-6 px-12 flex justify-between items-center bg-[#fdfeff0f]" style={{'boxShadow': '0px 4px 4px rgba(0, 0, 0, 0.25)', 'borderRadius': '8px'}}>
+            <header className="w-[72rem] h-[23rem] my-11 px-12 flex justify-between items-center bg-[#fdfeff0f]" style={{'boxShadow': '0px 4px 4px rgba(0, 0, 0, 0.25)', 'borderRadius': '8px'}}>
                 <img src="/ProfileGuy.svg" alt="" />
                 <div>
                     <strong className="text-4xl text-white font-black block">

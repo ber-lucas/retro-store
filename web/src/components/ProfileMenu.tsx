@@ -3,7 +3,7 @@ import CreateModalNewGame from './CreateModalNewGame';
 
 const Menu = () => {
   return (
-    <div className="pt-1 bg-nlw-gradient self-stretch rounded-lg mt-16 overflow-hidden">
+    <div className="pt-1 bg-nlw-gradient self-stretch rounded-lg overflow-hidden">
       <div className="bg-[#2A2634] px-8 py-6 flex justify-between items-center">
         <div>
           <strong className="text-4xl text-white font-black block">
