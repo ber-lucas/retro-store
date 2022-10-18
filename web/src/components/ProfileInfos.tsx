@@ -1,11 +1,6 @@
-import * as DialogPrimitive from '@radix-ui/react-dialog';
+import * as Dialog from '@radix-ui/react-dialog';
 import { Input } from "../Form/Input";
 import { CreateModalBalance } from './CreateModalBalance';
-
-
-export const Dialog = DialogPrimitive.Root;
-export const DialogTrigger = DialogPrimitive.Trigger;
-export const DialogClose = DialogPrimitive.Close;
 
 const ProfileInfos = () => {
     return (
@@ -39,14 +34,14 @@ const ProfileInfos = () => {
                     </div>
 
                     <div className="mt-8 flex flex-col items-center">
-                        <Dialog>                                
-                            <DialogTrigger className="py-3 px-4 bg-[#22C55E] hover:bg-[#199a48] text-white rounded flex items-center gap-3">
+                        <Dialog.Root>                                
+                            <Dialog.Trigger className="py-3 px-4 bg-[#22C55E] hover:bg-[#199a48] text-white rounded flex items-center gap-3">
                                 <img src="/ProfileCoin.svg" alt="" />
                                 <strong className="text-[19px]">Adicionar Saldo</strong>
-                            </DialogTrigger>
+                            </Dialog.Trigger>
 
                             <CreateModalBalance />
-                        </Dialog>
+                        </Dialog.Root>
                         <button className="py-3 px-8 mt-5 bg-[#71717A] hover:bg-[#62626a] text-white rounded flex items-center gap-3">
                             <strong className="text-[19px]">Editar Perfil</strong>
                         </button>

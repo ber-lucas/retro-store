@@ -1,9 +1,5 @@
-import * as DialogPrimitive from '@radix-ui/react-dialog';
+import * as Dialog from '@radix-ui/react-dialog';
 import CreateModalNewGame from './CreateModalNewGame';
-
-export const Dialog = DialogPrimitive.Root;
-export const DialogTrigger = DialogPrimitive.Trigger;
-export const DialogClose = DialogPrimitive.Close;
 
 const Menu = () => {
   return (
@@ -16,14 +12,14 @@ const Menu = () => {
         </div>
 
         <div className="flex gap-6 justify-center items-center">
-          <Dialog>
-            <DialogTrigger className="py-2 px-4 bg-[#22C55E] hover:bg-[#199a48] text-white rounded flex items-center gap-3">
+          <Dialog.Root>
+            <Dialog.Trigger className="py-2 px-4 bg-[#22C55E] hover:bg-[#199a48] text-white rounded flex items-center gap-3">
               <strong className="text-[27px]">+</strong>
               <strong className="text-[19px]">Adicionar novo jogo</strong>
-            </DialogTrigger>
+            </Dialog.Trigger>
             
             <CreateModalNewGame />
-          </Dialog>
+          </Dialog.Root>
         </div>
       </div>
     </div>
