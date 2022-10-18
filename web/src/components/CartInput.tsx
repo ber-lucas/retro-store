@@ -18,16 +18,16 @@ interface GameBannerProps {
             </div>
             </div>
 
-            <div className="flex self-end flex-row gap-4">
-                <div className="flex items-center justify-center bg-amber-300 rounded-md font-semibold w-24 h-12 hover:bg-amber-700 text-center">
-                    <div className="flex">R$ {props.price}</div>
-                </div>
-                <div className="flex items-center justify-center text-white bg-red-500 rounded-md font-semibold w-56 h-12 hover:bg-red-700">
-              <button className="flex items-center">
-                   <Minus className="" size={32} />
-                 <div className="">Remover do carrinho</div>
-              </button> 
-            </div>
+            <div className="flex self-end gap-4">
+              <div className="flex items-center justify-center py-2 px-4 bg-amber-300 rounded-md font-semibold hover:bg-amber-400 text-center">
+                  R$ {props.price}
+              </div>
+
+              <div className="flex items-center justify-center py-2 px-3 text-white bg-red-500 rounded-md font-semibold hover:bg-red-600">
+                <button className="flex items-center">
+                  <Minus className="" size={32} />
+                </button> 
+              </div>
             </div>
     </header>
     )

@@ -16,8 +16,8 @@ function Landing() {
             <div className="flex flex-col gap-2"> 
                 <Body />
 
-                <div className='pt-1 bg-nlw-gradient rounded-lg'>
-                    <div className='bg-[#2A2632] px-8 py-6 flex justify-between items-center rounded-lg'>
+                <div className='pt-1 bg-nlw-gradient rounded-lg overflow-hidden'>
+                    <div className='bg-[#2A2632] px-8 py-6 flex justify-between items-center'>
                         <div>
                             <strong className='text-2xl text-white font-black block'>Gostou de algum dos games?</strong>
                             <span className='text-zinc-400 block'>Registre um perfil para começar a comprar, vender e adicionar games!</span>

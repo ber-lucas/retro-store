@@ -22,7 +22,7 @@ const ProfileInfos = () => {
 
                 <div className="flex flex-col items-center">
                     <div>
-                        <strong className="text-4xl text-white font-black block">
+                        <strong className="text-4xl text-white font-black">
                             Saldo
                         </strong>
                     </div>
@@ -35,15 +35,15 @@ const ProfileInfos = () => {
 
                     <div className="mt-8 flex flex-col items-center">
                         <Dialog.Root>                                
-                            <Dialog.Trigger className="py-3 px-4 bg-[#22C55E] hover:bg-[#199a48] text-white rounded flex items-center gap-3">
+                            <Dialog.Trigger className="py-3 px-4 bg-green-500 hover:bg-green-600 text-white rounded flex items-center gap-3">
                                 <img src="/ProfileCoin.svg" alt="" />
-                                <strong className="text-[19px]">Adicionar Saldo</strong>
+                                <strong>Adicionar Saldo</strong>
                             </Dialog.Trigger>
 
                             <CreateModalBalance />
                         </Dialog.Root>
-                        <button className="py-3 px-8 mt-5 bg-[#71717A] hover:bg-[#62626a] text-white rounded flex items-center gap-3">
-                            <strong className="text-[19px]">Editar Perfil</strong>
+                        <button className="py-3 px-8 mt-5 bg-zinc-500 hover:bg-zinc-600 text-white rounded flex items-center gap-3">
+                            <strong>Editar Perfil</strong>
                         </button>
                     </div>
                 </div>
