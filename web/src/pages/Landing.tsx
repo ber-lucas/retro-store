@@ -8,7 +8,7 @@ import CreateModalLogin from "../components/CreateModalLogin"
 
 function Landing() {
     return (
-        <div className="flex flex-col items-center gap-16 py-8">
+        <div className="max-w-[1360px] mx-auto flex flex-col items-center gap-16 py-8">
             <Header />
 
             <img src="Logo.svg" alt="Logo Retro Store" />
