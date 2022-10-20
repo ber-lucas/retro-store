@@ -24,7 +24,7 @@ const Body = () => {
   }, [])
 
   return (
-    <main className="grid grid-cols-6 gap-6 py-8">
+    <main className="grid grid-cols-7 gap-6 py-8">
       {games.map(game => {
         return (
           <GameBanner 

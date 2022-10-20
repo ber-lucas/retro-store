@@ -8,43 +8,57 @@ const prisma = new PrismaClient()
 app.use(express.json())
 app.use(cors())
 
-app.get('/games', async (request, response)=>{
+app.get('/games', async (request, response) => { 
     const games = await prisma.game.findMany()
 
     return response.json(games)
 });
 
-app.get('/store/:id/balance', async (request, response)=>{
-    const userId:any = request.params.id;
-
-    const idUser = await prisma.user.findMany({
-        select: {
-            balance: true,
-        },
+app.get('/user', async (request, response) => {
+    const user = await prisma.user.findMany({
         where: {
-            id: userId,
+            games: {
+                every: {
+                    gameId: {}
+                }
+            }
         }
     })
-    return response.json(idUser)
+
+    return response.json(user)
 })
 
-app.get('/store/:id/profile', async (request, response)=>{
-    const userId = request.params.id;
+// app.get('/store/:id/balance', async (request, response)=>{
+//     const userId:any = request.params.id;
 
-    const idUserProfile = await prisma.user.findMany({
-        select: {
-            balance: true,
-            email: true,
-            name: true,
-            birthday: true,
-            ListGames: true,
-        },
-        where: {
-            id: userId,
-        }
-    })
-    return response.json(idUserProfile)
-})
+//     const idUser = await prisma.user.findMany({
+//         select: {
+//             balance: true,
+//         },
+//         where: {
+//             id: userId,
+//         }
+//     })
+//     return response.json(idUser)
+// })
+
+// app.get('/store/:id/profile', async (request, response)=>{
+//     const userId = request.params.id;
+
+//     const idUserProfile = await prisma.user.findMany({
+//         select: {
+//             balance: true,
+//             email: true,
+//             name: true,
+//             birthday: true,
+//             ListGames: true,
+//         },
+//         where: {
+//             id: userId,
+//         }
+//     })
+//     return response.json(idUserProfile)
+// })
 
 /*app.post('/store/:id/cart', async (request, response)=>{
     const gameId = request.params.id;

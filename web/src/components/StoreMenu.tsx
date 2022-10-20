@@ -1,4 +1,4 @@
-import { ShoppingCartSimple } from "phosphor-react"
+import { ShoppingCartSimple, Storefront } from "phosphor-react"
 import { useNavigate } from 'react-router-dom';
 
 const StoreMenu = () => {
@@ -8,8 +8,9 @@ const StoreMenu = () => {
     <div className="pt-1 bg-nlw-gradient self-stretch rounded-lg mt-16 overflow-hidden">
       <div className="bg-[#2A2634] px-8 py-6 flex justify-between items-center">
         <div>
-          <strong className="text-4xl text-white font-black block">
+          <strong className="flex gap-3 text-3xl text-white font-black">
             Store
+            <Storefront weight="duotone" size={36}/>
           </strong>
         </div>
 
@@ -24,9 +25,9 @@ const StoreMenu = () => {
             </span>
           </div>
 
-          <button onClick={() => {navigate('/shopping-cart')}} className="py-3 px-4 bg-[#F44336] hover:bg-[#d43a2f] text-white rounded flex items-center gap-3">
-            <ShoppingCartSimple size={25} weight={"duotone"} color={'#fff'} />
-            <strong className="text-[19px]">Carrinho de compras</strong>
+          <button onClick={() => {navigate('/shopping-cart')}} className="py-3 px-4 bg-red-500 hover:bg-red-600 text-white rounded flex justify-center items-center gap-3">
+            <ShoppingCartSimple size={24} weight={"duotone"} color={'#fff'} />
+            <strong>Carrinho de compras</strong>
           </button>
         </div>
       </div>

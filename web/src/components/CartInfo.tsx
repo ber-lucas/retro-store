@@ -1,4 +1,4 @@
-import { Minus } from "phosphor-react";
+import { Minus, ShoppingBag, ShoppingBagOpen, ShoppingCart, Storefront, Trash } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
 import CartInput from "./CartInput";
 
@@ -14,8 +14,27 @@ const CartInfo = (props: GameBannerProps) => {
 
     return (
         <div>
-            
-            <body className="text-white text-center font-extrabold text-3xl">Carrinho</body>
+            <div className='pt-1 bg-nlw-gradient rounded-lg overflow-hidden'>
+                <div className='bg-[#2A2632] px-8 py-6 flex justify-between items-center'>
+                    
+                    <div className="flex gap-3">
+                        <strong className='text-3xl text-white font-black block'>Carrinho</strong>
+                        <ShoppingCart weight="duotone" size={36} color={'white'} />
+                    </div>
+                    
+                    <div className="flex flex-row gap-5">
+                        <button onClick={() => navigate('/store')} className='font-semibold py-3 px-4 bg-red-500 text-white hover:bg-red-600 rounded flex items-center gap-3'>
+                            <Storefront size={24}/>
+                            Continuar Comprando
+                        </button>
+    
+                        <button className='font-semibold py-3 px-4 bg-zinc-500 text-white hover:bg-zinc-600 rounded flex items-center gap-3'>
+                            <Trash size={24}/>
+                            Limpar Carrinho
+                        </button>
+                    </div>
+                </div>
+            </div>
         
             <CartInput bannerUrl={props.bannerUrl} title={props.title} price={props.price}/>
             <CartInput bannerUrl={props.bannerUrl} title={props.title} price={props.price}/>
@@ -25,7 +44,7 @@ const CartInfo = (props: GameBannerProps) => {
                 <header className="flex justify-between w-[80rem] h-[8rem] mt-8 py-6 px-12 bg-[#fdfeff0f]" style={{'boxShadow': '0px 4px 4px rgba(0, 0, 0, 0.25)', 'borderRadius': '8px'}}>
                     <div className="flex items-center justify-center gap-4">
                         <div className=" text-white text-center font-extrabold text-3xl">Total estimado:</div>
-                        <div className="flex items-center justify-center bg-orange-500 rounded-md font-semibold w-24 h-12 hover:bg-orange-700 text-center">
+                        <div className="flex items-center justify-center bg-orange-500 rounded-md font-semibold w-24 h-12 hover:bg-orange-600 text-center">
                             <div className="flex">R$ {props.price}</div>
                         </div>
                       
@@ -33,27 +52,13 @@ const CartInfo = (props: GameBannerProps) => {
 
                     </div>
                     <div className="flex items-center">
-                    <button type="submit" className="flex justify-center bg-green-500 rounded-md font-semibold items-center w-48 h-12 hover:bg-green-800">
-                            <div className="flex">Adicionar ao carrinho</div>
-                    </button>
+                        <button type="submit" className="text-white flex justify-center gap-2 py-3 px-4 bg-green-500 rounded-md font-semibold items-center hover:bg-green-600">
+                            <ShoppingBagOpen weight="bold" size={24}/>
+                            Comprar
+                        </button>
                     </div>
                 </header>
             </div>
-
-            <div className="mt-8 flex justify-between">
-            <div className="flex items-center">
-                    <button onClick={() => navigate('/store')} type="submit" className="flex justify-center bg-violet-500 rounded-md font-semibold items-center w-48 h-12 hover:bg-violet-800 text-white">
-                            <div className="flex">Continuar comprando</div>
-                    </button>
-                    </div>
-                    <div className="flex items-center">
-                    <button type="submit" className="flex justify-center bg-red-500 rounded-md font-semibold items-center w-60 h-12 hover:bg-red-700 text-white">
-                            <Minus size={32} />
-                            <div className="flex text-white">Remover todos os itens</div>
-                    </button>
-                    </div>
-            </div>
-
         </div>
     )
 }
