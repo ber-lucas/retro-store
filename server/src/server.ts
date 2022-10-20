@@ -14,6 +14,21 @@ app.get('/games', async (request, response) => {
     return response.json(games)
 });
 
+app.get('/user/:id/games', async (request, response) => {
+    const userId = request.params.id;
+    
+    const gamesProfile = await prisma.user.findMany({
+        select: {
+            games: true
+        },
+        where: {
+            id: userId
+        }
+    })
+
+    return response.json(gamesProfile)
+})
+
 app.get('/user/:email-:password/login', async (request, response) => {
     const userEmail = request.params.email;
     const userPassword = request.params.password;
