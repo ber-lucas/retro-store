@@ -21,7 +21,7 @@ model Game {
   specifications String
   price          Int
 
-  users UserOnGame[]
+  users User[]
 }
 
 model User {
@@ -32,14 +32,5 @@ model User {
   balance   Int         @default(0)
   birthday  DateTime
 
-  games UserOnGame[]
-}
-
-model UserOnGame {
-  game Game @relation(fields: [gameId], references: [id])
-  gameId String
-  user User @relation(fields: [userId], references: [id])
-  userId String
-
-  @@id([gameId, userId])
+  games Game[]
 }
