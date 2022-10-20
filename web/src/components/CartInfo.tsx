@@ -23,7 +23,7 @@ const CartInfo = (props: GameBannerProps) => {
                     </div>
                     
                     <div className="flex flex-row gap-5">
-                        <button className='font-semibold py-3 px-4 bg-red-500 text-white hover:bg-red-600 rounded flex items-center gap-3'>
+                        <button onClick={() => navigate('/store')} className='font-semibold py-3 px-4 bg-red-500 text-white hover:bg-red-600 rounded flex items-center gap-3'>
                             <Storefront size={24}/>
                             Continuar Comprando
                         </button>
