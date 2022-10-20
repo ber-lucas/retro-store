@@ -22,6 +22,7 @@ model Game {
   price          Int
 
   users User[]
+  carts Cart[]
 }
 
 model User {
@@ -32,5 +33,14 @@ model User {
   balance   Int         @default(0)
   birthday  DateTime
 
-  games Game[]
+  games     Game[]
+  cart      Cart?
+}
+
+model Cart {
+  id        String      @id @default(uuid())
+  userId    String      @unique
+  
+  games     Game[]
+  user      User        @relation(fields: [userId], references: [id])
 }
