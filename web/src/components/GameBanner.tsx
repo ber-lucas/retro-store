@@ -19,24 +19,23 @@ interface GameBannerProps {
 const GameBanner = (props: GameBannerProps) => {
   return (
     <Dialog>
-      <DialogTrigger>
-        <button className='relative rounded-lg overflow-hidden'>
-          <img src={props.bannerUrl} alt="" />
+      <DialogTrigger className='relative rounded-lg overflow-hidden'>
+        <img src={props.bannerUrl} alt="" />
 
-          <div className='pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 right-0 left-0'>
-            <strong className='font-bold text-white block'>{props.title}</strong>
-          </div>
-        </button>
-        <CreateModalGame 
-        title={props.title}
-        about={props.about}
-        bannerUrl={props.bannerUrl} 
-        tag={props.tag}
-        trailer={props.trailer}
-        userReviews={props.userReviews}
-        specifications={props.specifications}
-        price={props.price}/>
+        <div className='pt-16 pb-4 px-4 bg-game-gradient absolute bottom-0 right-0 left-0'>
+          <strong className='font-bold text-white block'>{props.title}</strong>
+        </div>
       </DialogTrigger>
+      <CreateModalGame 
+      title={props.title}
+      about={props.about}
+      bannerUrl={props.bannerUrl} 
+      tag={props.tag}
+      trailer={props.trailer}
+      userReviews={props.userReviews}
+      specifications={props.specifications}
+      price={props.price}
+      />
     </Dialog>
   )
 }

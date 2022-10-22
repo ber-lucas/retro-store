@@ -28,6 +28,7 @@ const Body = () => {
       {games.map(game => {
         return (
           <GameBanner 
+          key={game.id}
           title={game.title}
           about={game.about}
           bannerUrl={game.bannerUrl} 
@@ -36,7 +37,7 @@ const Body = () => {
           userReviews={game.userReviews}
           specifications={game.specifications}
           price={game.price}
-           />
+          />
         )
       })}     
     </main>
