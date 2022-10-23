@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { createContext, useState } from 'react'
-import CreateModalLogin from '../components/CreateModalLogin';
+import { createContext, useEffect, useState } from 'react';
 
 type SignInData = {
     email: string;
@@ -9,7 +8,7 @@ type SignInData = {
 
 type LoginContextType = {
     user: string
-    signIn: (data:SignInData) => Promise<void>
+    signIn: (data:SignInData) => Promise<string | undefined | null>
 }
 
 export const LoginContext = createContext({} as LoginContextType)
@@ -18,15 +17,29 @@ export function LoginProvider(props:any) {
     const [user, setUser] = useState('')
     
     async function signIn({email, password}:SignInData) {
-        await axios(`http://localhost:3333/user/${email}-${password}/login`)
-            .then(response => response.data)
-            .then(response => response[0])
-            .then(response => setUser(response.id))
+
+        try {
+            await axios(`http://localhost:3333/user/${email}-${password}/login`)
+                .then(response => response.data)
+                .then(response => response[0])
+                .then(response => {
+                    setUser(response.id)
+                    return response.id
+                })
+                .then(response => localStorage.setItem('token', response))
+            
+            alert('Logado com sucesso.')
+
+            return localStorage.getItem('token')
+        } catch (error) {
+            alert('Erro ao fazer login.')
+        }
+        
     }
     
     return (
         <LoginContext.Provider value={{ signIn, user }}>
             {props.children}
         </LoginContext.Provider>
-    )
+    )   
 }

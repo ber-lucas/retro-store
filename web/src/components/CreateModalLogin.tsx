@@ -1,18 +1,19 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import axios from "axios";
 import { GameController } from "phosphor-react";
-import { FormEvent, useEffect, useState, useContext } from 'react'
+import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
-import { Input } from '../Form/Input'
 import { LoginContext } from '../Context/LoginContext'
 
 const CreateModalLogin = () => {
   const { signIn, user } = useContext(LoginContext)
   const { register, handleSubmit } = useForm()
+  const navigate = useNavigate()
 
   const handleLogin = (data:any) => {
-    signIn(data)
+    signIn(data).then(response => response ? navigate('/profile') : null)
   }
 
   return (

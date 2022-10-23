@@ -44,11 +44,9 @@ const ProfileInfos = () => {
                         <CreateModalBalance />
                     </Dialog.Root>
                     <Dialog.Root>
-                        <Dialog.Trigger>
-                            <button className="py-3 px-8 mt-5 bg-zinc-500 hover:bg-zinc-600 text-white rounded flex items-center gap-3">
+                            <Dialog.Trigger className="py-3 px-8 mt-5 bg-zinc-500 hover:bg-zinc-600 text-white rounded flex items-center gap-3">
                                 <strong>Editar Perfil</strong>
-                            </button>
-                        </Dialog.Trigger>
+                            </Dialog.Trigger>
                         <CreateModalEditProfile />
                     </Dialog.Root>
                 </div>
