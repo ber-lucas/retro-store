@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 
 import GameBanner from "./GameBanner";
+import { LoginContext } from '../Context/LoginContext'
 
 interface Game {
   id: string,
@@ -17,11 +18,16 @@ interface Game {
 
 const Body = () => {
   const [games, setGames] = useState<Game[]>([])
+  const { user } = useContext(LoginContext)
   
   useEffect(() => {
-    axios('http://localhost:3333/games')
-      .then(response => setGames(response.data))
-  }, [])
+    axios(`http://localhost:3333/user/${user}/games`)
+      .then(response => response.data)
+      .then(data => data[0])
+      .then(response => setGames(response.games))
+    
+    
+  }, [user])
 
   return (
     <main className="grid grid-cols-7 gap-6 py-8">

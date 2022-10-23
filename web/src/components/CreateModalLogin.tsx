@@ -1,37 +1,18 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import axios from "axios";
 import { GameController } from "phosphor-react";
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useEffect, useState, useContext } from 'react'
+import { useForm } from 'react-hook-form'
 
 import { Input } from '../Form/Input'
-
-interface Login {
-  id: String
-}
+import { LoginContext } from '../Context/LoginContext'
 
 const CreateModalLogin = () => {
-  const [login, setLogin] = useState<Login[]>([])
+  const { signIn, user } = useContext(LoginContext)
+  const { register, handleSubmit } = useForm()
 
-  useEffect(() => {
-    if(login.length)
-      console.log('Consegui')
-  
-  }, [login]) 
-
-  const handleLogin = (event: FormEvent) => {
-    event.preventDefault()
-
-    const formData = new FormData(event.target as HTMLFormElement)
-
-    const data = Object.fromEntries(formData)
-
-    if(!data.password)
-      return
-
-    axios(`http://localhost:3333/user/${data.email}-${data.password}/login`)
-      .then(response => setLogin(response.data))
-
-      //alert('Deu certo!')  
+  const handleLogin = (data:any) => {
+    signIn(data)
   }
 
   return (
@@ -41,17 +22,17 @@ const CreateModalLogin = () => {
       <Dialog.Content className='fixed bg-[#2A2634] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[30rem] shadow-lg shadow-black/25'>
         <Dialog.Title className="font-black text-4xl">Login</Dialog.Title>
 
-        <form onSubmit={handleLogin} className='mt-8 flex flex-col gap-4'>
+        <form onSubmit={handleSubmit(handleLogin)} className='mt-8 flex flex-col gap-4'>
           <div className="flex flex-col gap-4">
 
             <div className="flex flex-col gap-2">
               <label htmlFor="email" className=" text-base font-semibold">Email</label>
-              <Input name="email" id="email" type='email' placeholder="fulano@gmail.com"/>
+              <input {...register('email')} name="email" id="email" type='email' className='bg-zinc-900 placeholder:text-zinc-500 py-3 px-4 rounded text-sm' placeholder="fulano@gmail.com"/>
             </div>
 
             <div className="flex flex-col gap-2">
               <label htmlFor="password" className="text-base font-semibold">Senha</label>
-              <Input name="password" id="password" type='password' placeholder="******" />
+              <input {...register('password')} name="password" id="password" type='password' className='bg-zinc-900 placeholder:text-zinc-500 py-3 px-4 rounded text-sm' placeholder="******" />
             </div>
 
           </div>

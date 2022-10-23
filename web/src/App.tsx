@@ -2,11 +2,15 @@ import { BrowserRouter as Router} from 'react-router-dom';
 import Routes from './routes';
 import "./styles/main.css";
 
+import { LoginProvider } from './Context/LoginContext'
+
 function App() {
   return (
-    <Router>      
-      <Routes />
-    </Router>
+    <LoginProvider>
+      <Router>      
+        <Routes />
+      </Router>
+    </LoginProvider>
   );
 }
 
