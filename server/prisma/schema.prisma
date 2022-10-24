@@ -31,7 +31,8 @@ model User {
   email     String
   password  String
   balance   Int         @default(0)
-  birthday  DateTime
+  birthday  String
+  userGitHub String
 
   games     Game[]
   cart      Cart?

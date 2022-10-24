@@ -1,5 +1,4 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import axios from "axios";
 import { GameController } from "phosphor-react";
 import { useContext } from 'react'
 import { useForm } from 'react-hook-form'

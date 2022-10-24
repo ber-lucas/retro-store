@@ -51,6 +51,25 @@ app.get('/user/:id/cart', async (request, response) => {
     return response.json(gamesCart)
 })
 
+app.get('/user/:id/data', async (request, response) => {
+    const userId = request.params.id
+
+    const userData = await prisma.user.findMany({
+        include: {
+            _count: {
+                select: {
+                    games: true
+                }
+            },
+        },
+        where: {
+            id: userId
+        }
+    })
+
+    return response.json(userData)
+})
+
 //Verificar existência de e-mail e senha
 app.get('/user/:email-:password/login', async (request, response) => {
     const userEmail = request.params.email;
