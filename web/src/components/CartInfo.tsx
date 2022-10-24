@@ -1,15 +1,30 @@
-import { Minus, ShoppingBag, ShoppingBagOpen, ShoppingCart, Storefront, Trash } from "phosphor-react";
+import { CodesandboxLogo, ShoppingBagOpen, ShoppingCart, Storefront, Trash } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
-import CartInput from "./CartInput";
 
-interface GameBannerProps {
+import CartInput from "./CartInput";
+import { LoginContext } from "../Context/LoginContext";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+
+interface Game {
+    id: string,
     title: string,
     bannerUrl: string,
-    tag: string,
     price: number
-    }
+}
 
-const CartInfo = (props: GameBannerProps) => {
+const CartInfo = (props:Game) => {
+    const [games, setGames] = useState<Game[]>([])
+    const { user, auth } = useContext(LoginContext)
+
+    useEffect(() => {
+        axios(`http://localhost:3333/user/${auth}/cart`)
+            .then(response => response.data)
+            .then(response => response[0])
+            .then(response => response.cart)
+            .then(response => setGames(response.games))
+    }, [user])
+    
     const navigate = useNavigate()
 
     return (
@@ -36,16 +51,14 @@ const CartInfo = (props: GameBannerProps) => {
                 </div>
             </div>
         
-            <CartInput bannerUrl={props.bannerUrl} title={props.title} price={props.price}/>
-            <CartInput bannerUrl={props.bannerUrl} title={props.title} price={props.price}/>
-            <CartInput bannerUrl={props.bannerUrl} title={props.title} price={props.price}/>
-        
+            {games.map(game => <CartInput key={game.id} title={game.title} bannerUrl={game.bannerUrl} price={game.price}/>)}
+
             <div>
                 <header className="flex justify-between w-[80rem] h-[8rem] mt-8 py-6 px-12 bg-[#fdfeff0f]" style={{'boxShadow': '0px 4px 4px rgba(0, 0, 0, 0.25)', 'borderRadius': '8px'}}>
                     <div className="flex items-center justify-center gap-4">
                         <div className=" text-white text-center font-extrabold text-3xl">Total estimado:</div>
                         <div className="flex items-center justify-center bg-orange-500 rounded-md font-semibold w-24 h-12 hover:bg-orange-600 text-center">
-                            <div className="flex">R$ {props.price}</div>
+                            <div className="flex">R$ </div>
                         </div>
                       
                         
