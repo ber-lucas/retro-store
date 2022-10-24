@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import ProfileInfos from "../components/ProfileInfos";
 import ProfileMenu from "../components/ProfileMenu";
-import Body from "../components/Body";
+import BodyProfile from "../components/BodyProfile";
 
 function Profile() {
     return(
@@ -13,7 +13,7 @@ function Profile() {
                 <ProfileMenu />
 
                 <div className="bg-zinc-400/20 mt-5 px-[80px] rounded-lg">
-                    <Body />
+                    <BodyProfile />
                 </div>
             </div>
         </div>

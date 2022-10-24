@@ -21,7 +21,8 @@ model Game {
   specifications String
   price          Int
 
-  users UserOnGame[]
+  users User[]
+  carts Cart[]
 }
 
 model User {
@@ -30,16 +31,17 @@ model User {
   email     String
   password  String
   balance   Int         @default(0)
-  birthday  DateTime
+  birthday  String
+  userGitHub String
 
-  games UserOnGame[]
+  games     Game[]
+  cart      Cart?
 }
 
-model UserOnGame {
-  game Game @relation(fields: [gameId], references: [id])
-  gameId String
-  user User @relation(fields: [userId], references: [id])
-  userId String
-
-  @@id([gameId, userId])
+model Cart {
+  id        String      @id @default(uuid())
+  userId    String      @unique
+  
+  games     Game[]
+  user      User        @relation(fields: [userId], references: [id])
 }

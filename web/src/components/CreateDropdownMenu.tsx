@@ -1,9 +1,19 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { List, ShoppingCart, Storefront, UserCircle } from "phosphor-react";
+import { List, ShoppingCart, SignIn, SignOut, Storefront, UserCircle } from "phosphor-react";
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { LoginContext } from '../Context/LoginContext';
 
 const CreateDropdownMenu = () => {
     const navigate = useNavigate();
+    const { isAuthenticated } = useContext(LoginContext)
+
+    function signOut() {
+        localStorage.clear();
+        navigate('/');
+
+        return location.reload()
+    }
 
     return (
         <DropdownMenu.Root>
@@ -13,8 +23,7 @@ const CreateDropdownMenu = () => {
 
             <DropdownMenu.Portal >
                 <DropdownMenu.Content 
-                className='w-52 pb-4 pt-1 bg-[#2A2632] text-white rounded shadow-2xl flex flex-col'
-                
+                className='w-52 pb-4 pt-1 bg-[#2A2632] text-white rounded shadow-2xl flex flex-col' 
                 >
                     <DropdownMenu.Arrow />
                     
@@ -25,19 +34,28 @@ const CreateDropdownMenu = () => {
                     <DropdownMenu.Separator className='h-[1px] mb-1 bg-orange-400/50 mx-1'/>
 
                     <DropdownMenu.Group className='pl-6 pr-3 flex flex-col gap-1'>
-                        <DropdownMenu.Item title='Profile' onClick={() => {navigate('/profile')}} className='flex justify-between items-center hover:cursor-pointer'>
+                        <DropdownMenu.Item title='Profile' onClick={() => {isAuthenticated ? navigate('/profile') : null}} className='flex justify-between items-center hover:cursor-pointer'>
                             Perfil
                             <UserCircle size={22} />
                         </DropdownMenu.Item>
                         
-                        <DropdownMenu.Item title='Store' onClick={() => {navigate('/store')}} className='flex justify-between items-center hover:cursor-pointer'>
+                        <DropdownMenu.Item title='Store' onClick={() => { isAuthenticated ? navigate('/store'): null}} className='flex justify-between items-center hover:cursor-pointer'>
                             Loja
                             <Storefront size={22} />
                         </DropdownMenu.Item>
 
-                        <DropdownMenu.Item title='Store' onClick={() => {navigate('/shopping-cart')}} className='flex justify-between items-center hover:cursor-pointer'>
+                        <DropdownMenu.Item title='Cart' onClick={() => {isAuthenticated ? navigate('/shopping-cart') : null}} className='flex justify-between items-center hover:cursor-pointer'>
                             Carrinho
                             <ShoppingCart size={22} />
+                        </DropdownMenu.Item>
+                    </DropdownMenu.Group>
+
+                    <DropdownMenu.Separator className='h-[1px] my-1 bg-orange-400/50 mx-1'/>
+
+                    <DropdownMenu.Group className='pl-6 pr-3 flex flex-col gap-1'>
+                        <DropdownMenu.Item title='Store' onClick={() => isAuthenticated ? signOut() : null} className='flex justify-between items-center hover:cursor-pointer'>
+                            Logout
+                            <SignOut size={22} />
                         </DropdownMenu.Item>
                     </DropdownMenu.Group>
 

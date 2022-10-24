@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useState, useEffect, useContext } from 'react'
 
 import GameBanner from "./GameBanner";
-import { LoginContext } from '../Context/LoginContext'
 
 interface Game {
   id: string,
@@ -16,13 +15,16 @@ interface Game {
   price: number
 }
 
-const Body = () => {
+const BodyProfile = () => {
   const [games, setGames] = useState<Game[]>([])
-  
+  const user = localStorage.getItem('token')
+
   useEffect(() => {
-    axios(`http://localhost:3333/games`)
-      .then(response => setGames(response.data))   
-  }, [])
+    axios(`http://localhost:3333/user/${user}/games`)
+      .then(response => response.data)
+      .then(data => data[0])
+      .then(response => setGames(response.games)) 
+  }, [user])
 
   return (
     <main className="grid grid-cols-7 gap-6 py-8">
@@ -45,4 +47,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default BodyProfile;

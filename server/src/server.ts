@@ -8,57 +8,93 @@ const prisma = new PrismaClient()
 app.use(express.json())
 app.use(cors())
 
+//Lista de Games que aparencem na Landing Page e na Store
 app.get('/games', async (request, response) => { 
     const games = await prisma.game.findMany()
 
     return response.json(games)
 });
 
-app.get('/user', async (request, response) => {
-    const user = await prisma.user.findMany({
+//Lista de Games que aparecem no Profile
+app.get('/user/:id/games', async (request, response) => {
+    const userId = request.params.id;
+    
+    const gamesProfile = await prisma.user.findMany({
+        select: {
+            games: true
+        },
         where: {
-            games: {
-                every: {
-                    gameId: {}
+            id: userId
+        }
+    })
+
+    return response.json(gamesProfile)
+})
+
+//Lista de Games que aparecem no carrinho de cada usuário
+app.get('/user/:id/cart', async (request, response) => {
+    const userId = request.params.id;
+
+    const gamesCart = await prisma.user.findMany({
+        select: {
+            cart: {
+                select: {
+                    games: true
                 }
             }
+        },
+        where: {
+            id: userId
+        }
+    })
+
+    return response.json(gamesCart)
+})
+
+app.get('/user/:id/data', async (request, response) => {
+    const userId = request.params.id
+
+    const userData = await prisma.user.findMany({
+        include: {
+            _count: {
+                select: {
+                    games: true
+                }
+            },
+        },
+        where: {
+            id: userId
+        }
+    })
+
+    return response.json(userData)
+})
+
+//Verificar existência de e-mail e senha
+app.get('/user/:email-:password/login', async (request, response) => {
+    const userEmail = request.params.email;
+    const userPassword = request.params.password;
+
+    const user = await prisma.user.findMany({
+        include: {
+            _count: {
+                select: {
+                    games: true
+                }
+            }
+        },
+        where: {
+            email: {
+                equals: userEmail
+            },
+            password: {
+                equals: userPassword
+            },
         }
     })
 
     return response.json(user)
 })
-
-// app.get('/store/:id/balance', async (request, response)=>{
-//     const userId:any = request.params.id;
-
-//     const idUser = await prisma.user.findMany({
-//         select: {
-//             balance: true,
-//         },
-//         where: {
-//             id: userId,
-//         }
-//     })
-//     return response.json(idUser)
-// })
-
-// app.get('/store/:id/profile', async (request, response)=>{
-//     const userId = request.params.id;
-
-//     const idUserProfile = await prisma.user.findMany({
-//         select: {
-//             balance: true,
-//             email: true,
-//             name: true,
-//             birthday: true,
-//             ListGames: true,
-//         },
-//         where: {
-//             id: userId,
-//         }
-//     })
-//     return response.json(idUserProfile)
-// })
 
 /*app.post('/store/:id/cart', async (request, response)=>{
     const gameId = request.params.id;
