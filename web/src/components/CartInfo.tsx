@@ -51,7 +51,7 @@ const CartInfo = (props:Game) => {
                 </div>
             </div>
         
-            {games.map(game => <CartInput key={game.id} title={game.title} bannerUrl={game.bannerUrl} price={game.price}/>)}
+            {games.map(game => <CartInput key={game.id} title={game.title} bannerUrl={game.bannerUrl} price={game.price} id={""}/>)}
 
             <div>
                 <header className="flex justify-between w-[80rem] h-[8rem] mt-8 py-6 px-12 bg-[#fdfeff0f]" style={{'boxShadow': '0px 4px 4px rgba(0, 0, 0, 0.25)', 'borderRadius': '8px'}}>
