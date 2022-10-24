@@ -6,18 +6,32 @@ type SignInData = {
     password: string;
 }
 
+type UserType = {
+    name: string,
+    birthday: string,
+    balance: number,
+    userGitHub: string,
+
+    _count: {
+        games: number
+    }
+}
+
 type LoginContextType = {
-    user: string | null
+    auth: string | null
+    user: UserType | undefined
     isAuthenticated: boolean
     signIn: (data:SignInData) => Promise<string | undefined | null>
 }
 
+
 export const LoginContext = createContext({} as LoginContextType)
 
 export function LoginProvider(props:any) {
-    const [user, setUser] = useState(localStorage.getItem('token'))
-
-    const isAuthenticated = !!user
+    const [auth, setAuth] = useState(localStorage.getItem('token'))
+    const [user, setUser] = useState<UserType | undefined>(undefined)
+    
+    const isAuthenticated = !!auth
     
     async function signIn({email, password}:SignInData) {
         try {
@@ -25,7 +39,10 @@ export function LoginProvider(props:any) {
                 .then(response => response.data)
                 .then(response => response[0])
                 .then(response => {
-                    setUser(response.id)
+                    setAuth(response.id)
+                    
+                    localStorage.setItem('user', JSON.stringify(response))
+
                     return response.id
                 })
                 .then(response => localStorage.setItem('token', response))
@@ -39,11 +56,12 @@ export function LoginProvider(props:any) {
     }
 
     useEffect(() => {
-        setUser(localStorage.getItem('token'))
-    }, [user])
+        setAuth(localStorage.getItem('token'))
+        setUser(JSON.parse(String(localStorage.getItem('user'))))
+    }, [auth])
 
     return (
-        <LoginContext.Provider value={{ signIn, user, isAuthenticated }}>
+        <LoginContext.Provider value={{ signIn, auth, isAuthenticated, user }}>
             {props.children}
         </LoginContext.Provider>
     )   

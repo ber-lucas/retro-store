@@ -76,8 +76,12 @@ app.get('/user/:email-:password/login', async (request, response) => {
     const userPassword = request.params.password;
 
     const user = await prisma.user.findMany({
-        select: {
-            id: true
+        include: {
+            _count: {
+                select: {
+                    games: true
+                }
+            }
         },
         where: {
             email: {
