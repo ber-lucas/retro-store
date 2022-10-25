@@ -50,8 +50,16 @@ export function LoginProvider(props:any) {
     
     const isAuthenticated = !!auth
 
-    async function updateProfile({name, birthday, userGitHub}:UpdateProfileType) {
-        
+    async function updateProfile({email, password, name, birthday, userGitHub}:SignInData) {
+        await axios.post(`http://localhost:3333/user/${auth}/data/update`, {
+            email,
+            password,
+            name,
+            birthday,
+            userGitHub,
+        })
+            .then(response => response.data)
+            .then(response => console.log(response))
     }
 
     async function addBalance({balance}:BalanceType) {

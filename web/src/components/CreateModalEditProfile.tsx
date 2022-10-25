@@ -10,31 +10,31 @@ export function CreateModalEditProfile () {
             <form className='mt-8 flex flex-col gap-4'>
                 <div className="flex flex-col gap-4">
                     <div className="flex flex-col gap-2">
-                        <h1 className="text-white text-base font-normal">
+                        <label className="text-white text-base font-normal">
                         Informe o nome
-                        </h1>
+                        </label>
                         <input
                         className="bg-zinc-900 h-12 rounded pl-4 text-white"
                         placeholder="Jorginho"
-                        name="inputNewName"
-                        id="inputNewName"
+                        name="name"
+                        id="name"
                         />
                     </div>
                     <div className="flex flex-col gap-2">
-                        <h1 className="text-white text-base font-normal">
+                        <label className="text-white text-base font-normal">
                         Informe a Data de Nascimento
-                        </h1>
+                        </label>
                         <input
                         className="bg-zinc-900 h-12 rounded pl-4 text-white"
                         placeholder="11/08/1990"
-                        name="inputNewDate"
-                        id="inputNewDate"
+                        name="birthday"
+                        id="birthday"
                         />
                     </div>
                     <div className="flex flex-col gap-2">
-                        <h1 className="text-white text-base font-normal">
-                        Informe os Jogos
-                        </h1>
+                        <label className="text-white text-base font-normal">
+                        Novo usuário do GitHub
+                        </label>
                         <input
                         className="bg-zinc-900 h-12 rounded pl-4 text-white"
                         placeholder="45"
