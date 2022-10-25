@@ -28,6 +28,7 @@ const ProfileInfos = () => {
                 <strong className="text-4xl text-white font-black block">
                     Perfil
                 </strong>
+                
                 <div className='flex flex-col gap-2 mt-5 text-white'>
                     <label htmlFor="name" className='font-semibold' style={{ 'color': '#ffffff' }}>Nome completo</label>
                     <div className='flex items-center bg-zinc-900 py-3 px-4 rounded text-base h-11'>{user?.name}</div>
