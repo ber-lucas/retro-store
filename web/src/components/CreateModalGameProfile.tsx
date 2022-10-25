@@ -1,4 +1,4 @@
-import { Plus } from "phosphor-react";
+import { Minus, Plus } from "phosphor-react";
 
 import * as Dialog from '@radix-ui/react-dialog';
 
