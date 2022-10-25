@@ -63,6 +63,8 @@ export function LoginProvider(props:any) {
                 .then(response => response.data)
                 .then(response => {
                     setUser(response)
+                    setBalance(response.balance)
+
                     localStorage.setItem('balance', response.balance)
                     localStorage.setItem('user', JSON.stringify(response))
 
@@ -122,6 +124,7 @@ export function LoginProvider(props:any) {
                 .then(response => {
                     setAuth(response.id)
                     
+                    localStorage.setItem('balance', response.balance)
                     localStorage.setItem('user', JSON.stringify(response))
 
                     return response.id
