@@ -1,4 +1,5 @@
 import * as Dialog from '@radix-ui/react-dialog';
+import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { LoginContext } from '../Context/LoginContext';
 import { CreateModalBalance } from './CreateModalBalance';
@@ -7,7 +8,7 @@ import { CreateModalEditProfile } from './CreateModalEditProfile';
 const ProfileInfos = () => {
     const { user } = useContext(LoginContext)
     const [avatar, setAvatar] = useState(localStorage.getItem('avatar'))
-    
+
     // useEffect(() => {
     //     axios(`https://api.github.com/users/${user?.userGitHub}`)
     //         .then(response => response.data)
@@ -30,11 +31,11 @@ const ProfileInfos = () => {
                 
                 <div className='flex flex-col gap-2 mt-5 text-white'>
                     <label htmlFor="name" className='font-semibold' style={{ 'color': '#ffffff' }}>Nome completo</label>
-                    <div className='flex items-center justify-center bg-zinc-900 py-3 px-4 rounded text-base h-11'>{user?.name}</div>
+                    <div className='flex items-center bg-zinc-900 py-3 px-4 rounded text-base h-11'>{user?.name}</div>
                     <label htmlFor="date" className='font-semibold' style={{ 'color': '#ffffff' }}>Data de Nascimento</label>
                     <div className='flex items-center justify-center bg-zinc-900 py-3 px-4 rounded text-base h-11'>{user?.birthday}</div>
-                    <label htmlFor="number" className='font-semibold' style={{ 'color': '#ffffff' }}>Usuário Github</label>
-                    <div className='flex items-center justify-center bg-zinc-900 py-3 px-4 rounded text-base font-semibold h-11'>{user?.userGitHub}</div>
+                    <label htmlFor="number" className='font-semibold' style={{ 'color': '#ffffff' }}>Jogos na Biblioteca</label>
+                    <div className='flex items-center justify-center bg-zinc-900 py-3 px-4 rounded text-base font-semibold h-11 w-16'>{user?._count.games}</div>
                 </div>
             </div>
 

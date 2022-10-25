@@ -169,6 +169,7 @@ app.post('/user/:id/cart/clean', async (request, response) => {
 })
 
 app.post('/user/:userid/cart/:gameid/clean', async (request, response) => {
+    const userId = request.params.userid
     const gameId = request.params.gameid
 
     const cleanGame = await prisma.game.update({
@@ -212,12 +213,6 @@ app.post('/user/:id/data/update', async (request, response) => {
             id: userId
         },
         data: {
-            email: {
-                set: body.email
-            },
-            password: {
-                set: body.password
-            },
             name: {
                 set: body.name
             },
@@ -225,15 +220,6 @@ app.post('/user/:id/data/update', async (request, response) => {
                 set: body.birthday
             },
             userGitHub: body.userGitHub
-        },
-        include: {
-            games: true,
-            cart: true,
-            _count: {
-                select: {
-                    games: true
-                }
-            }
         }
     })
 
