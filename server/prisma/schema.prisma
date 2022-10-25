@@ -19,10 +19,10 @@ model Game {
   trailer        String
   userReviews    String
   specifications String
-  price          Int
+  price          Float
 
-  users User[]
-  carts Cart[]
+  cartUsers          User[]      @relation(name: "carrinho")
+  libraryUsers       User[]      @relation(name: "biblioteca")
 }
 
 model User {
@@ -33,15 +33,8 @@ model User {
   balance   Int         @default(0)
   birthday  String
   userGitHub String
-
-  games     Game[]
-  cart      Cart?
-}
-
-model Cart {
-  id        String      @id @default(uuid())
-  userId    String      @unique
   
-  games     Game[]
-  user      User        @relation(fields: [userId], references: [id])
+  cart      Game[]      @relation(name: "carrinho")
+  games     Game[]      @relation(name: "biblioteca")
 }
+
