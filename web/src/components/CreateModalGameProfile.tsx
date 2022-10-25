@@ -71,7 +71,7 @@ export function CreateModalGameProfile(props:GameBannerProps) {
               </Dialog.Close>
               
               <button
-                className="justify-center bg-red-500 rounded-md font-semibold flex items-center w-52 h-12 hover:bg-green-600"
+                className="justify-center bg-red-500 rounded-md font-semibold flex items-center w-52 h-12 hover:bg-red-700"
               >
                 <Minus size={24}/>
                 <div className="flex">Deletar</div>
