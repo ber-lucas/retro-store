@@ -6,6 +6,7 @@ export const DialogTrigger = DialogPrimitive.Trigger;
 export const DialogClose = DialogPrimitive.Close;
 
 interface GameBannerProps {
+  id: string,
   title: string,
   about: string,
   bannerUrl: string,
@@ -27,15 +28,14 @@ const GameBanner = (props: GameBannerProps) => {
         </div>
       </DialogTrigger>
       <CreateModalGame 
-      title={props.title}
-      about={props.about}
-      bannerUrl={props.bannerUrl} 
-      tag={props.tag}
-      trailer={props.trailer}
-      userReviews={props.userReviews}
-      specifications={props.specifications}
-      price={props.price}
-      />
+        title={props.title}
+        about={props.about}
+        bannerUrl={props.bannerUrl}
+        tag={props.tag}
+        trailer={props.trailer}
+        userReviews={props.userReviews}
+        specifications={props.specifications}
+        price={props.price} id={props.id}      />
     </Dialog>
   )
 }

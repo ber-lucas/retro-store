@@ -16,16 +16,20 @@ interface Game {
 const CartInfo = (props:Game) => {
     const [games, setGames] = useState<Game[]>([])
     const { user, auth } = useContext(LoginContext)
+    const navigate = useNavigate()
+    let soma = 0;
 
     useEffect(() => {
         axios(`http://localhost:3333/user/${auth}/cart`)
             .then(response => response.data)
             .then(response => response[0])
-            .then(response => response.cart)
-            .then(response => setGames(response.games))
+            .then(response => setGames(response.cart))
     }, [user])
     
-    const navigate = useNavigate()
+    const cleanCart = async () => {
+        await axios.post(`http://localhost:3333/user/${auth}/cart/clean`)
+            .then(response => location.reload())
+    }
 
     return (
         <div>
@@ -43,7 +47,7 @@ const CartInfo = (props:Game) => {
                             Continuar Comprando
                         </button>
     
-                        <button className='font-semibold py-3 px-4 bg-zinc-500 text-white hover:bg-zinc-600 rounded flex items-center gap-3'>
+                        <button onClick={() => cleanCart()} className='font-semibold py-3 px-4 bg-zinc-500 text-white hover:bg-zinc-600 rounded flex items-center gap-3'>
                             <Trash size={24}/>
                             Limpar Carrinho
                         </button>
@@ -51,14 +55,18 @@ const CartInfo = (props:Game) => {
                 </div>
             </div>
         
-            {games.map(game => <CartInput key={game.id} title={game.title} bannerUrl={game.bannerUrl} price={game.price} id={""}/>)}
+            {games.map(game => {
+                soma += game.price
+
+                return <CartInput key={game.id} title={game.title} bannerUrl={game.bannerUrl} price={game.price} id={game.id}/>
+            })}
 
             <div>
                 <header className="flex justify-between w-[80rem] h-[8rem] mt-8 py-6 px-12 bg-[#fdfeff0f]" style={{'boxShadow': '0px 4px 4px rgba(0, 0, 0, 0.25)', 'borderRadius': '8px'}}>
                     <div className="flex items-center justify-center gap-4">
                         <div className=" text-white text-center font-extrabold text-3xl">Total estimado:</div>
                         <div className="flex items-center justify-center bg-orange-500 rounded-md font-semibold w-24 h-12 hover:bg-orange-600 text-center">
-                            <div className="flex">R$ </div>
+                            <div className="flex">R$ {soma}</div>
                         </div>
                       
                         

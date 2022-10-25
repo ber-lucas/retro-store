@@ -8,16 +8,16 @@ import { CreateModalEditProfile } from './CreateModalEditProfile';
 const ProfileInfos = () => {
     const { user } = useContext(LoginContext)
     const [avatar, setAvatar] = useState(localStorage.getItem('avatar'))
- 
-    useEffect(() => {
-        axios(`https://api.github.com/users/${user?.userGitHub}`)
-            .then(response => response.data)
-            .then(data => {
-                localStorage.setItem('avatar', data.avatar_url)
 
-                return setAvatar(data.avatar_url)
-            })
-    }, [user])
+    // useEffect(() => {
+    //     axios(`https://api.github.com/users/${user?.userGitHub}`)
+    //         .then(response => response.data)
+    //         .then(data => {
+    //             localStorage.setItem('avatar', data.avatar_url)
+
+    //             return setAvatar(data.avatar_url)
+    //         })
+    // }, [user])
 
     return (
         <header className="w-[72rem] h-[23rem] my-11 px-12 flex justify-between items-center bg-[#fdfeff0f]" style={{ 'boxShadow': '0px 4px 4px rgba(0, 0, 0, 0.25)', 'borderRadius': '8px' }}>
@@ -47,7 +47,7 @@ const ProfileInfos = () => {
 
                 <div className="flex bg-zinc-900 w-[126px] h-[38px] mt-5 rounded-sm justify-center items-center">
                     <span className="text-2xl text-white font-semibold block">
-                        R$ {user?.balance}
+                        R$ {Number(localStorage.getItem('balance'))}
                     </span>
                 </div>
 

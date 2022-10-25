@@ -29,16 +29,15 @@ const Body = () => {
       {games.map(game => {
         return (
           <GameBanner 
-          key={game.id}
-          title={game.title}
-          about={game.about}
-          bannerUrl={game.bannerUrl} 
-          tag={game.tag}
-          trailer={game.trailer}
-          userReviews={game.userReviews}
-          specifications={game.specifications}
-          price={game.price}
-          />
+            key={game.id}
+            title={game.title}
+            about={game.about}
+            bannerUrl={game.bannerUrl}
+            tag={game.tag}
+            trailer={game.trailer}
+            userReviews={game.userReviews}
+            specifications={game.specifications}
+            price={game.price} id={game.id}          />
         )
       })}     
     </main>

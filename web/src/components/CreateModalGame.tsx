@@ -1,8 +1,12 @@
 import { Plus } from "phosphor-react";
 
 import * as Dialog from '@radix-ui/react-dialog';
+import axios from "axios";
+import { useContext } from "react";
+import { LoginContext } from "../Context/LoginContext";
 
 interface GameBannerProps {
+  id: string
   title: string,
   about: string,
   bannerUrl: string,
@@ -14,14 +18,20 @@ interface GameBannerProps {
 }
 
 export function CreateModalGame(props:GameBannerProps) {
+  const { auth } = useContext(LoginContext)
+  
+  const addCart = async () => {
+    await axios.post(`http://localhost:3333/user/${auth}/games/${props.id}/tocart`)
+      .then(response => location.reload())
+  }
+
   return (
     <Dialog.Portal>
       <Dialog.Overlay className="bg-black/60 inset-0 fixed" />
 
       <Dialog.Content className="fixed bg-[#2A2634] py-8 px-14 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] h-[620px] shadow-lg shadow-black/25 overflow-y-scroll">
         <Dialog.Title className="text-3xl font-black text-center">{props.title}</Dialog.Title>
-
-          <form className="mt-8 flex flex-col justify-between items-center">
+          <div className="mt-8 flex flex-col justify-between items-center">
             <img className="h-33 w-32 md:object-center" src={props.bannerUrl}/>
              <ol className="list-decimal mt-4">
                 <li>{props.about}</li>
@@ -61,7 +71,7 @@ export function CreateModalGame(props:GameBannerProps) {
             <body className="mt-4">
             <iframe width="360" height="240" src={props.trailer} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
             </body>
-            <body className="justify-center mt-4 bg-amber-300 rounded-md font-semibold hover:bg-violet-600 w-20 h-11 flex items-center text-black">R$ {props.price}</body>
+            <body className="justify-center mt-4 bg-amber-300 rounded-md font-semibold hover:bg-amber-400 w-20 h-11 flex items-center text-black">R$ {props.price}</body>
               
 
             <footer className="mt-4 flex justify-center gap-x-32">
@@ -73,14 +83,14 @@ export function CreateModalGame(props:GameBannerProps) {
               </Dialog.Close>
               
               <button
-                type="submit"
-                className="bg-green-500 rounded-md font-semibold flex flex-1 items-center w-52 h-12 hover:bg-violet-600"
+                onClick={() => addCart()}
+                className="bg-green-500 rounded-md font-semibold flex flex-1 items-center w-52 h-12 hover:bg-green-600"
               >
                 <Plus size={32} />
                 <div className="flex">Adicionar ao carrinho</div>
               </button>
             </footer>
-          </form>
+          </div>
       </Dialog.Content>
     </Dialog.Portal>
   );
