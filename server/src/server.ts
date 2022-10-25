@@ -204,6 +204,28 @@ app.post('/user/:id/balance', async (request, response) => {
     return response.status(201).json(addBalance)
 })
 
+app.post('/user/:id/data/update', async (request, response) => {
+    const userId = request.params.id;
+    const body = request.body;
+
+    const updateProfile = await prisma.user.update({
+        where: {
+            id: userId
+        },
+        data: {
+            name: {
+                set: body.name
+            },
+            birthday: {
+                set: body.birthday
+            },
+            userGitHub: body.userGitHub
+        }
+    })
+
+    return response.status(201).json(updateProfile)
+})
+
 /*app.post('/store/:id/cart', async (request, response)=>{
     const gameId = request.params.id;
     const body = request.body;

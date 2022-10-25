@@ -24,6 +24,12 @@ type BalanceType = {
     balance: number
 }
 
+type UpdateProfileType = {
+    name: string,
+    birthday: string,
+    userGitHub: string
+}
+
 type LoginContextType = {
     auth: string | null
     user: UserType | undefined
@@ -43,6 +49,11 @@ export function LoginProvider(props:any) {
     const [balance, setBalance] = useState<BalanceType | number | null>(Number(localStorage.getItem('balance')))
     
     const isAuthenticated = !!auth
+
+    async function updateProfile({name, birthday, userGitHub}:UpdateProfileType) {
+        
+    }
+
     async function addBalance({balance}:BalanceType) {
         console.log(balance)
         await axios.post(`http://localhost:3333/user/${auth}/balance`, {

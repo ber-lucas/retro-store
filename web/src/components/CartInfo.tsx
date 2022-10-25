@@ -1,4 +1,4 @@
-import { CodesandboxLogo, ShoppingBagOpen, ShoppingCart, Storefront, Trash } from "phosphor-react";
+import { ShoppingBagOpen, ShoppingCart, Storefront, Trash } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
 
 import CartInput from "./CartInput";
