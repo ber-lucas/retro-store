@@ -62,6 +62,21 @@ export function CreateModalGameProfile(props:GameBannerProps) {
             <iframe width="360" height="240" src={props.trailer} title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
             </body>
           </form>
+          <footer className="mt-4 flex justify-center gap-x-32">
+              <Dialog.Close
+                type="button"
+                className="align-baseline bg-zinc-500 px-5 h-12 rounded-md font-semibold hover:bg-zinc-600"
+              >
+                Cancelar
+              </Dialog.Close>
+              
+              <button
+                className="justify-center bg-red-500 rounded-md font-semibold flex items-center w-52 h-12 hover:bg-green-600"
+              >
+                <Minus size={24}/>
+                <div className="flex">Deletar</div>
+              </button>
+            </footer>
       </Dialog.Content>
     </Dialog.Portal>
   );
