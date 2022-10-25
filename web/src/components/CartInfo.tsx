@@ -17,7 +17,45 @@ const CartInfo = (props:Game) => {
     const [games, setGames] = useState<Game[]>([])
     const { user, auth } = useContext(LoginContext)
     const navigate = useNavigate()
-    let soma = 0;
+    let totalPrice = 0;
+
+    const handleBuyGame = async () => {
+        const balanceForBuy = localStorage.getItem('balance')
+
+        const gamesId = games.map(game => {id: game.id})
+
+        const validationGames = user?.games.map(game => {
+            if(games.includes(game))
+                return true
+            
+            return false
+        })
+
+        if(validationGames?.includes(true))
+            return alert('Sua biblioteca já contém este(s) jogo(s).')
+        
+        if(Number(balanceForBuy) - totalPrice >= 0) {
+            localStorage.setItem('balance', JSON.stringify(Number(balanceForBuy) - totalPrice))
+
+            try {
+                await axios.post(`http://localhost:3333/user/${auth}/cart/buy`, {
+                    buyGames: gamesId
+                })
+                    .then(response => response.data)
+                    .then(response => {
+                        cleanCart()
+                        localStorage.setItem('user', JSON.stringify(response))
+
+                        return alert('Jogo(s) comprado(s) com sucesso!')
+                    })
+            } catch (error) {
+                alert('Erro ao efetuar compra.')
+            }
+        }
+        else {
+            alert('Saldo insuficiente.')
+        }
+    }
 
     useEffect(() => {
         axios(`http://localhost:3333/user/${auth}/cart`)
@@ -56,7 +94,7 @@ const CartInfo = (props:Game) => {
             </div>
         
             {games.map(game => {
-                soma += game.price
+                totalPrice += game.price
 
                 return <CartInput key={game.id} title={game.title} bannerUrl={game.bannerUrl} price={game.price} id={game.id}/>
             })}
@@ -66,14 +104,14 @@ const CartInfo = (props:Game) => {
                     <div className="flex items-center justify-center gap-4">
                         <div className=" text-white text-center font-extrabold text-3xl">Total estimado:</div>
                         <div className="flex items-center justify-center bg-orange-500 rounded-md font-semibold w-24 h-12 hover:bg-orange-600 text-center">
-                            <div className="flex">R$ {soma}</div>
+                            <div className="flex">R$ {totalPrice}</div>
                         </div>
                       
                         
 
                     </div>
                     <div className="flex items-center">
-                        <button type="submit" className="text-white flex justify-center gap-2 py-3 px-4 bg-green-500 rounded-md font-semibold items-center hover:bg-green-600">
+                        <button onClick={() => handleBuyGame()} className="text-white flex justify-center gap-2 py-3 px-4 bg-green-500 rounded-md font-semibold items-center hover:bg-green-600">
                             <ShoppingBagOpen weight="bold" size={24}/>
                             Comprar
                         </button>

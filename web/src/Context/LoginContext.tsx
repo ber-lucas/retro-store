@@ -15,6 +15,9 @@ type UserType = {
     balance: number,
     userGitHub: string,
 
+    cart: [{id:string}],
+    games: []
+
     _count: {
         games: number
     }
@@ -22,12 +25,6 @@ type UserType = {
 
 type BalanceType = {
     balance: number
-}
-
-type UpdateProfileType = {
-    name: string,
-    birthday: string,
-    userGitHub: string
 }
 
 type LoginContextType = {

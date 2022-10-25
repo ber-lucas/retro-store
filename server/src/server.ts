@@ -78,7 +78,9 @@ app.get('/user/:email-:password/login', async (request, response) => {
                 select: {
                     games: true
                 }
-            }
+            },
+            cart: true,
+            games: true
         },
         where: {
             email: {
@@ -169,7 +171,6 @@ app.post('/user/:id/cart/clean', async (request, response) => {
 })
 
 app.post('/user/:userid/cart/:gameid/clean', async (request, response) => {
-    const userId = request.params.userid
     const gameId = request.params.gameid
 
     const cleanGame = await prisma.game.update({
@@ -213,6 +214,12 @@ app.post('/user/:id/data/update', async (request, response) => {
             id: userId
         },
         data: {
+            email: {
+                set: body.email
+            },
+            password: {
+                set: body.password
+            },
             name: {
                 set: body.name
             },
@@ -220,10 +227,46 @@ app.post('/user/:id/data/update', async (request, response) => {
                 set: body.birthday
             },
             userGitHub: body.userGitHub
+        },
+        include: {
+            games: true,
+            cart: true,
+            _count: {
+                select: {
+                    games: true
+                }
+            }
         }
     })
 
     return response.status(201).json(updateProfile)
+})
+
+app.post('/user/:id/cart/buy', async (request, response) => {
+    const { id } = request.params
+    const body = request.body
+
+    const buyGame = await prisma.user.update({
+        where: {
+            id: id
+        },
+        data: {
+            games: {
+                connect: body.buyGames
+            }
+        },
+        include: {
+            games: true,
+            cart: true,
+            _count: {
+                select: {
+                    games: true
+                }
+            }
+        }
+    })
+
+    return response.status(201).json(buyGame)
 })
 
 /*app.post('/store/:id/cart', async (request, response)=>{
