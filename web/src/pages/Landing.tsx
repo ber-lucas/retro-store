@@ -2,9 +2,9 @@ import { SignIn, UserPlus } from "phosphor-react"
 import * as Dialog from "@radix-ui/react-dialog"
 
 import Header from "../components/Header"
-import Body from "../components/Body"
 import CreateModalRegister from "../components/CreateModalRegister"
 import CreateModalLogin from "../components/CreateModalLogin"
+import BodyLanding from "../components/BodyLanding"
 
 function Landing() {
     return (
@@ -14,7 +14,7 @@ function Landing() {
             <img src="Logo.svg" alt="Logo Retro Store" />
 
             <div className="flex flex-col gap-2"> 
-                <Body />
+                <BodyLanding />
 
                 <div className='pt-1 bg-nlw-gradient rounded-lg overflow-hidden'>
                     <div className='bg-[#2A2632] px-8 py-6 flex justify-between items-center'>
