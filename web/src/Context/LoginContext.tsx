@@ -38,6 +38,7 @@ type LoginContextType = {
     signIn: (data:SignInData) => Promise<string | undefined | null>
     registering: (data:SignInData) => Promise<string| void | undefined | null>
     addBalance: (data:BalanceType) => Promise<void>
+    updateProfile: (data:SignInData) => Promise<void>
 }
 
 
@@ -50,8 +51,28 @@ export function LoginProvider(props:any) {
     
     const isAuthenticated = !!auth
 
-    async function updateProfile({name, birthday, userGitHub}:UpdateProfileType) {
-        
+    async function updateProfile({email, password, name, birthday, userGitHub}:SignInData) {
+        try {
+            await axios.post(`http://localhost:3333/user/${auth}/data/update`, {
+                email,
+                password,
+                name,
+                birthday,
+                userGitHub,
+            })
+                .then(response => response.data)
+                .then(response => {
+                    setUser(response)
+                    localStorage.setItem('balance', response.balance)
+                    localStorage.setItem('user', JSON.stringify(response))
+
+                    return location.reload()
+                })
+            
+            alert('Dados atualizados com sucesso!')
+        } catch (error) {
+            alert('Erro ao tentar atualizar os dados.')
+        }
     }
 
     async function addBalance({balance}:BalanceType) {
@@ -122,7 +143,7 @@ export function LoginProvider(props:any) {
     }, [auth, balance])
 
     return (
-        <LoginContext.Provider value={{ signIn, registering, addBalance, auth, isAuthenticated, user, balance }}>
+        <LoginContext.Provider value={{ signIn, registering, addBalance, updateProfile, auth, isAuthenticated, user, balance }}>
             {props.children}
         </LoginContext.Provider>
     )   
