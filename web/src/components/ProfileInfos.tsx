@@ -1,12 +1,15 @@
 import * as Dialog from '@radix-ui/react-dialog';
+import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { LoginContext } from '../Context/LoginContext';
 import { CreateModalBalance } from './CreateModalBalance';
 import { CreateModalEditProfile } from './CreateModalEditProfile';
 
 const ProfileInfos = () => {
-    const { user } = useContext(LoginContext)
+    const { user, auth } = useContext(LoginContext)
     const [avatar, setAvatar] = useState(localStorage.getItem('avatar'))
+    const navigate = useNavigate()
     
     // useEffect(() => {
     //     axios(`https://api.github.com/users/${user?.userGitHub}`)
@@ -17,6 +20,23 @@ const ProfileInfos = () => {
     //             return setAvatar(data.avatar_url)
     //         })
     // }, [user])
+
+    const deleteUser = async () => {
+        try {
+            await axios.delete(`http://localhost:3333/user/${auth}/delete`)
+            .then(response => {
+                localStorage.clear()
+                navigate('/')
+
+                return alert('Perfil excluído com sucesso.')
+            })
+
+            
+        } catch (error) {
+            alert('Erro ao deletar perfil.')
+        }
+        
+    }
 
     return (
         <header className="w-[72rem] h-[23rem] my-11 px-12 flex justify-between items-center bg-[#fdfeff0f]" style={{ 'boxShadow': '0px 4px 4px rgba(0, 0, 0, 0.25)', 'borderRadius': '8px' }}>
@@ -66,6 +86,9 @@ const ProfileInfos = () => {
                             </Dialog.Trigger>
                         <CreateModalEditProfile />
                     </Dialog.Root>
+                    <button onClick={() => deleteUser()} className="py-3 px-8 mt-5 bg-red-500 hover:bg-red-600 text-white rounded flex items-center gap-3">
+                        <strong>Deletar Perfil</strong>
+                    </button>
                 </div>
             </div>
 

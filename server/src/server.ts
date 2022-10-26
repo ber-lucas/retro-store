@@ -297,4 +297,16 @@ app.post('/user/:user/game/:game/delete', async (request, response) => {
     return response.status(201).json(deleteGame)
 })
 
+app.delete('/user/:user/delete', async (request, response) => {
+    const { user } = request.params
+
+    const deleteUser = await prisma.user.delete({
+        where: {
+            id: user
+        }
+    })
+
+    return response.status(201).json(deleteUser )
+})
+
 app.listen(3333)
