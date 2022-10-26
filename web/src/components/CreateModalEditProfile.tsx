@@ -26,8 +26,9 @@ export function CreateModalEditProfile () {
                             
                             <input
                             {...register('email')}
+                            type='email'
                             className="bg-zinc-900 h-12 rounded pl-4 text-white"
-                            placeholder="Jorginho"
+                            placeholder="cleitinho@gmai.com"
                             name="email"
                             id="email"
                             />
@@ -40,8 +41,9 @@ export function CreateModalEditProfile () {
                             
                             <input
                             {...register('password')}
+                            type='password'
                             className="bg-zinc-900 h-12 rounded pl-4 text-white"
-                            placeholder="Jorginho"
+                            placeholder="*******"
                             name="password"
                             id="password"
                             />
@@ -54,8 +56,9 @@ export function CreateModalEditProfile () {
 
                             <input
                             {...register('name')}
+                            type='text'
                             className="bg-zinc-900 h-12 rounded pl-4 text-white"
-                            placeholder="Jorginho"
+                            placeholder="Cleiton da Silva"
                             name="name"
                             id="name"
                             />
@@ -68,6 +71,7 @@ export function CreateModalEditProfile () {
 
                             <input
                             {...register('birthday')}
+                            type='text'
                             className="bg-zinc-900 h-12 rounded pl-4 text-white"
                             placeholder="11/08/1990"
                             name="birthday"
@@ -82,8 +86,9 @@ export function CreateModalEditProfile () {
 
                             <input
                             {...register('userGitHub')}
+                            type='text'
                             className="bg-zinc-900 h-12 rounded pl-4 text-white"
-                            placeholder="45"
+                            placeholder="cleitim_do_git"
                             name="userGitHub"
                             id="userGitHub"
                             />
