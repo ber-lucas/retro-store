@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const StoreMenu = () => {
   const navigate = useNavigate();
-  
+
   return (
     <div className="pt-1 bg-nlw-gradient self-stretch rounded-lg mt-16 overflow-hidden">
       <div className="bg-[#2A2634] px-8 py-6 flex justify-between items-center">
@@ -21,7 +21,7 @@ const StoreMenu = () => {
 
           <div className="flex bg-zinc-900 w-[126px] h-[38px] rounded-sm justify-center items-center">
             <span className="text-2xl text-white font-semibold block">
-              R$ 0,00
+              R$ {Number(localStorage.getItem('balance'))}
             </span>
           </div>
 

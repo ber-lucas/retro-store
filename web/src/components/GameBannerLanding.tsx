@@ -1,5 +1,5 @@
 import * as DialogPrimitive from '@radix-ui/react-dialog';
-import { CreateModalGame } from './CreateModalGame';
+import { CreateModalGameLanding } from './CreateModalGameLanding';
 
 export const Dialog = DialogPrimitive.Root;
 export const DialogTrigger = DialogPrimitive.Trigger;
@@ -17,7 +17,7 @@ interface GameBannerProps {
   price: number
 }
 
-const GameBanner = (props: GameBannerProps) => {
+const GameBannerLanding = (props: GameBannerProps) => {
   return (
     <Dialog>
       <DialogTrigger className='relative rounded-lg overflow-hidden'>
@@ -27,7 +27,7 @@ const GameBanner = (props: GameBannerProps) => {
           <strong className='font-bold text-white block'>{props.title}</strong>
         </div>
       </DialogTrigger>
-      <CreateModalGame 
+      <CreateModalGameLanding 
         title={props.title}
         about={props.about}
         bannerUrl={props.bannerUrl}
@@ -35,9 +35,10 @@ const GameBanner = (props: GameBannerProps) => {
         trailer={props.trailer}
         userReviews={props.userReviews}
         specifications={props.specifications}
-        price={props.price} id={props.id}      />
+        price={props.price}
+        />
     </Dialog>
   )
 }
 
-export default GameBanner;
+export default GameBannerLanding;

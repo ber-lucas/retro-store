@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import { LoginContext } from '../Context/LoginContext'
 
 const CreateModalLogin = () => {
-  const { signIn, user } = useContext(LoginContext)
+  const { signIn } = useContext(LoginContext)
   const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
 

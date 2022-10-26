@@ -1,4 +1,4 @@
-import { CodesandboxLogo, ShoppingBagOpen, ShoppingCart, Storefront, Trash } from "phosphor-react";
+import { ShoppingBagOpen, ShoppingCart, Storefront, Trash } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
 
 import CartInput from "./CartInput";
@@ -16,16 +16,58 @@ interface Game {
 const CartInfo = (props:Game) => {
     const [games, setGames] = useState<Game[]>([])
     const { user, auth } = useContext(LoginContext)
+    const navigate = useNavigate()
+    let totalPrice = 0;
+
+    const handleBuyGame = async () => {
+        const balanceForBuy = localStorage.getItem('balance')
+
+        const gamesId = games.map(game => {id: game.id})
+
+        const validationGames = user?.games.map(game => {
+            if(games.includes(game))
+                return true
+            
+            return false
+        })
+
+        if(validationGames?.includes(true))
+            return alert('Sua biblioteca já contém este(s) jogo(s).')
+        
+        if(Number(balanceForBuy) - totalPrice >= 0) {
+            localStorage.setItem('balance', JSON.stringify(Number(balanceForBuy) - totalPrice))
+
+            try {
+                await axios.post(`http://localhost:3333/user/${auth}/cart/buy`, {
+                    buyGames: gamesId
+                })
+                    .then(response => response.data)
+                    .then(response => {
+                        cleanCart()
+                        localStorage.setItem('user', JSON.stringify(response))
+
+                        return alert('Jogo(s) comprado(s) com sucesso!')
+                    })
+            } catch (error) {
+                alert('Erro ao efetuar compra.')
+            }
+        }
+        else {
+            alert('Saldo insuficiente.')
+        }
+    }
 
     useEffect(() => {
         axios(`http://localhost:3333/user/${auth}/cart`)
             .then(response => response.data)
             .then(response => response[0])
-            .then(response => response.cart)
-            .then(response => setGames(response.games))
+            .then(response => setGames(response.cart))
     }, [user])
     
-    const navigate = useNavigate()
+    const cleanCart = async () => {
+        await axios.post(`http://localhost:3333/user/${auth}/cart/clean`)
+            .then(response => location.reload())
+    }
 
     return (
         <div>
@@ -43,7 +85,7 @@ const CartInfo = (props:Game) => {
                             Continuar Comprando
                         </button>
     
-                        <button className='font-semibold py-3 px-4 bg-zinc-500 text-white hover:bg-zinc-600 rounded flex items-center gap-3'>
+                        <button onClick={() => cleanCart()} className='font-semibold py-3 px-4 bg-zinc-500 text-white hover:bg-zinc-600 rounded flex items-center gap-3'>
                             <Trash size={24}/>
                             Limpar Carrinho
                         </button>
@@ -51,21 +93,25 @@ const CartInfo = (props:Game) => {
                 </div>
             </div>
         
-            {games.map(game => <CartInput key={game.id} title={game.title} bannerUrl={game.bannerUrl} price={game.price} id={""}/>)}
+            {games.map(game => {
+                totalPrice += game.price
+
+                return <CartInput key={game.id} title={game.title} bannerUrl={game.bannerUrl} price={game.price} id={game.id}/>
+            })}
 
             <div>
                 <header className="flex justify-between w-[80rem] h-[8rem] mt-8 py-6 px-12 bg-[#fdfeff0f]" style={{'boxShadow': '0px 4px 4px rgba(0, 0, 0, 0.25)', 'borderRadius': '8px'}}>
                     <div className="flex items-center justify-center gap-4">
                         <div className=" text-white text-center font-extrabold text-3xl">Total estimado:</div>
                         <div className="flex items-center justify-center bg-orange-500 rounded-md font-semibold w-24 h-12 hover:bg-orange-600 text-center">
-                            <div className="flex">R$ </div>
+                            <div className="flex">R$ {totalPrice}</div>
                         </div>
                       
                         
 
                     </div>
                     <div className="flex items-center">
-                        <button type="submit" className="text-white flex justify-center gap-2 py-3 px-4 bg-green-500 rounded-md font-semibold items-center hover:bg-green-600">
+                        <button onClick={() => handleBuyGame()} className="text-white flex justify-center gap-2 py-3 px-4 bg-green-500 rounded-md font-semibold items-center hover:bg-green-600">
                             <ShoppingBagOpen weight="bold" size={24}/>
                             Comprar
                         </button>
