@@ -269,21 +269,32 @@ app.post('/user/:id/cart/buy', async (request, response) => {
     return response.status(201).json(buyGame)
 })
 
-/*app.post('/store/:id/cart', async (request, response)=>{
-    const gameId = request.params.id;
-    const body = request.body;
+app.post('/user/:user/game/:game/delete', async (request, response) => {
+    const { user, game } = request.params;
 
-    
-
-    const carts = await prisma.cart.create({
+    const deleteGame = await prisma.user.update({
+        where: {
+            id: user
+        },
+        include: {
+            games: true,
+            cart: true,
+            _count: {
+                select: {
+                    games: true
+                }
+            }
+        },
         data: {
-            gameId,
-            createdAt: body.createdAt,
-            game: body.game,
+            games: {
+                disconnect: {
+                    id: game
+                }
+            }
         }
     })
 
-    return response.json(body)
-})*/
+    return response.status(201).json(deleteGame)
+})
 
 app.listen(3333)

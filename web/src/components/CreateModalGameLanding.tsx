@@ -1,6 +1,7 @@
 import * as Dialog from '@radix-ui/react-dialog';
 
 interface GameBannerProps {
+  id: string,
   title: string,
   about: string,
   bannerUrl: string,
