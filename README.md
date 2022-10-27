@@ -4,6 +4,14 @@ Sistema pensado e feito com Node.JS + PostgreSQL para o Trabalho Prático da dis
 
 A Retro’s Store consiste em uma plataforma colecionadora de jogos eletrônicos na Web, sendo um produto que possibilita ao usuário explicitar toda sua coleção de jogos e realizar comércio sobre jogos.
 
+Integrantes do grupo: 
+- Bernardo Lucas de Araújo Dias
+- Breno Arthur Rotte Fernandes Oliveira
+- Matheus Lopes Moreira
+- Pedro Henrique Dias Borges
+- Vinícius Correa Nobre Borges
+
+
 Todas as tecnologias utilizadas foram:
 <div style="display: inline_block">
     <h3>Linguagens:</h3>
