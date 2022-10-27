@@ -1,8 +1,6 @@
-import * as Dialog from '@radix-ui/react-dialog';
-import { Books, Plus } from 'phosphor-react';
+import { ArrowRight, Books, GameController } from 'phosphor-react';
 import { useContext } from 'react';
 import { LoginContext } from '../Context/LoginContext';
-import CreateModalNewGame from './CreateModalNewGame';
 
 const Menu = () => {
   const { user } = useContext(LoginContext)
@@ -23,19 +21,12 @@ const Menu = () => {
               Jogos
             </strong>
 
-            <div className='flex justify-center items-center h-11 py-3 px-4 bg-zinc-900 rounded'>
+            <div className='flex justify-center items-center gap-2 h-11 py-3 px-4 bg-zinc-900 rounded'>
               {user?._count.games}
+              <ArrowRight size={18} />
+              < GameController size={30} />
             </div>
           </div>
-
-          <Dialog.Root>
-            <Dialog.Trigger className="py-3 px-4 bg-green-500 hover:bg-green-600 text-white rounded flex items-center gap-3">
-              <Plus weight='bold' size={24}/>
-              <strong>Adicionar novo jogo</strong>
-            </Dialog.Trigger>
-            
-            <CreateModalNewGame />
-          </Dialog.Root>
         </div>
       </div>
     </div>

@@ -22,17 +22,20 @@ const CartInfo = (props:Game) => {
     const handleBuyGame = async () => {
         const balanceForBuy = localStorage.getItem('balance')
 
-        const gamesId = games.map(game => {id: game.id})
-
-        const validationGames = user?.games.map(game => {
-            if(games.includes(game))
-                return true
-            
-            return false
+        const gamesId = games.map(game => {
+            return {id: game.id}
         })
 
-        if(validationGames?.includes(true))
+        const validationGames = user?.games.map(game => 
+            games.map(gameCart => JSON.stringify(game) == JSON.stringify(gameCart))
+        )
+        
+        if(validationGames?.map(validation => {
+            return (validation.includes(true))
+        }).includes(true)) {
             return alert('Sua biblioteca já contém este(s) jogo(s).')
+        }
+            
         
         if(Number(balanceForBuy) - totalPrice >= 0) {
             localStorage.setItem('balance', JSON.stringify(Number(balanceForBuy) - totalPrice))

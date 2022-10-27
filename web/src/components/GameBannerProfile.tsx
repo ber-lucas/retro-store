@@ -6,6 +6,7 @@ export const DialogTrigger = DialogPrimitive.Trigger;
 export const DialogClose = DialogPrimitive.Close;
 
 interface GameBannerProfileProps {
+  id: string,
   title: string,
   about: string,
   bannerUrl: string,
@@ -27,6 +28,7 @@ const GameBannerProfile = (props: GameBannerProfileProps) => {
         </div>
       </DialogTrigger>
       <CreateModalGameProfile 
+      id={props.id}
       title={props.title}
       about={props.about}
       bannerUrl={props.bannerUrl} 

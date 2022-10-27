@@ -40,6 +40,7 @@ const BodyProfile = () => {
           userReviews={game.userReviews}
           specifications={game.specifications}
           price={game.price}
+          id={game.id}
           />
         )
       })}     
