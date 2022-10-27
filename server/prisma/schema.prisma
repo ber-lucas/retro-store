@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,7 +8,7 @@ datasource db {
 }
 
 model Game {
-  id             String      @id @default(uuid())
+  id             String @id @default(uuid())
   title          String
   about          String
   bannerUrl      String
@@ -20,21 +17,18 @@ model Game {
   userReviews    String
   specifications String
   price          Float
-
-  cartUsers          User[]      @relation(name: "carrinho")
-  libraryUsers       User[]      @relation(name: "biblioteca")
+  libraryUsers   User[] @relation("biblioteca")
+  cartUsers      User[] @relation("carrinho")
 }
 
 model User {
-  id        String      @id @default(uuid())
-  name      String
-  email     String
-  password  String
-  balance   Int         @default(0)
-  birthday  String
+  id         String @id @default(uuid())
+  name       String
+  email      String
+  password   String
+  balance    Int    @default(0)
+  birthday   String
   userGitHub String
-  
-  cart      Game[]      @relation(name: "carrinho")
-  games     Game[]      @relation(name: "biblioteca")
+  games      Game[] @relation("biblioteca")
+  cart       Game[] @relation("carrinho")
 }
-
