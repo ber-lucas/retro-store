@@ -11,15 +11,15 @@ const ProfileInfos = () => {
     const [avatar, setAvatar] = useState(localStorage.getItem('avatar'))
     const navigate = useNavigate()
     
-    // useEffect(() => {
-    //     axios(`https://api.github.com/users/${user?.userGitHub}`)
-    //         .then(response => response.data)
-    //         .then(data => {
-    //             localStorage.setItem('avatar', data.avatar_url)
+    useEffect(() => {
+        axios(`https://api.github.com/users/${user?.userGitHub}`)
+            .then(response => response.data)
+            .then(data => {
+                localStorage.setItem('avatar', data.avatar_url)
 
-    //             return setAvatar(data.avatar_url)
-    //         })
-    // }, [user])
+                return setAvatar(data.avatar_url)
+            })
+    }, [user])
 
     const deleteUser = async () => {
         try {
