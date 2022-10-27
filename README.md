@@ -23,6 +23,8 @@ Todas as tecnologias utilizadas foram:
     <img align="center" alt="ES-Node" height="30" src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white">
     <img align="center" alt="ES-NPM" height="30" src="https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white">
     <img align="center" alt="ES-EXPO" height="30" src="https://img.shields.io/badge/expo-1C1E24?style=for-the-badge&logo=expo&logoColor=#D04A37">
+    <h3>Banco de Dados:</h3>
+    <img align="center" alt="ES-SQLite" height="30" src="https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white"> 
     <h3>ORM:</h3>
     <img align="center" alt="ES-SEQ" height="30" src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white"> 
     <h3>Ferramentas:</h3>
@@ -39,6 +41,7 @@ Todas as tecnologias utilizadas foram:
 Para usar o projeto, siga os passos abaixo:
 1. Faça o download de todos arquivos neste repositório;
 2. Entre na pasta `web` instale as dependências da API com o comando `npm install`
-3. Após todos os passos, inicie o servidor da API com o comando `npm run dev`.
+3. Entre na pasta `server` instale as dependências da API com o comando `npm install`
+4. Após todos os passos, inicie o servidor nas pastas `web` e `server` com o comando `npm run dev`
 
 --- 
